@@ -69,6 +69,13 @@ class Comment(models.Model):
     text = models.TextField(_("text"))
     posted_on = models.DateTimeField(_("posted on"), auto_now_add=True)
     
+    def __unicode__(self):
+        cutoff = 20
+        if len(self.text) > cutoff:
+            return u"%s..." % self.text[:cutoff]
+        else:
+            return self.text
+    
     class Meta:
         verbose_name = _("comment")
         verbose_name_plural = _("comments")
@@ -82,6 +89,9 @@ class Invitation(models.Model):
     sent_by = models.ForeignKey('auth.User', verbose_name=pgettext_lazy("invitation", "sent by"))
     sent_to = models.EmailField(pgettext_lazy("invitation", "sent to"))
     sent_on = models.DateTimeField(pgettext_lazy("invitation", "sent on"), auto_now_add=True)
+    
+    def __unicode__(self):
+        return self.sent_to
     
     class Meta:
         verbose_name = _("invitation")
