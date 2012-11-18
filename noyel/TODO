@@ -9,7 +9,6 @@
 * Check that a user cannot access any present-related views where he's not participating.
 * Polish invitation code/workflow
 * inline invitation in present_detail
-* reply-to header in invite email
 * show pending invites on present_detail
 * Re-send invitation
 * change language view

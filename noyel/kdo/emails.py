@@ -16,6 +16,16 @@ class InvitationEmail(EmailTemplate):
     from_email = settings.DEFAULT_FROM_EMAIL
     to_template = '{{ invitation.sent_to }}'
     
+    def render_headers(self, context):
+        """Add a Reply-To header if the sender of the invitation filled in
+        their email address.
+        
+        """
+        headers = {}
+        if context['invitation'].sent_by.email:
+            headers['Reply-To'] = context['invitation'].sent_by.email
+        return headers
+    
     @property
     def body_template_name(self):
         """Return the template name corresponding to the active language."""
