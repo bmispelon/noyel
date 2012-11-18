@@ -12,7 +12,7 @@ class SignupForm(UserCreationForm):
         """Disallow @ in usernames."""
         if '@' in self.cleaned_data['username']:
             raise forms.ValidationError(_("Your username cannot contain a \"@\"."))
-        return super(SignupForm, self).clean_user()
+        return super(SignupForm, self).clean_username()
 
 
 class ProfileUpdateForm(forms.ModelForm):
