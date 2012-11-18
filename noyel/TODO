@@ -1,5 +1,5 @@
 * friends
-* Multiple email addresse
+* Multiple email address
 * User email validation
 * Lost password
 * Search by giftee
@@ -10,9 +10,12 @@
 * Polish invitation code/workflow
 * inline invitation in present_detail
 * reply-to header in invite email
-* Use email template for invite email
-* Put <title> on most pages
 * show pending invites on present_detail
 * Re-send invitation
 * change language view
 * timezone preferences
+* Dont send an email if the invitation's address belongs to a user
+* Use first_name in invitation typeahead
+* konami code (ponystrap)
+* Use real SMTP server (not gmail) in prod
+* requirements
