@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Oops...' %}</h1>
+<p class="lead">
+{% trans "You broke the internet." %}
+</p>
+<p>
+{% trans "The Elders of the Internet have been warned. They'll get to the issue when they have some time." %}
+</p>
+{% endblock %}

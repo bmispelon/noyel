@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Oops...' %}</h1>
+<p class="lead">
+{% trans "The page you're trying to access doesn't exist." %}
+</p>
+<p>
+{% trans "If you think it should exist, contact the owner of this website." %}
+</p>
+{% endblock %}

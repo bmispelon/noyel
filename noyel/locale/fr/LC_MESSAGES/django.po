@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 01:37+0100\n"
-"PO-Revision-Date: 2012-11-18 01:35+0100\n"
+"POT-Creation-Date: 2012-11-18 10:32+0100\n"
+"PO-Revision-Date: 2012-11-18 10:33+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -353,24 +353,24 @@ msgstr "Le commentaire a été mis à jour avec succès."
 msgid "The comment has been deleted successfully."
 msgstr "Le commentaire a été supprimé avec succès."
 
-#: kdo/views/invitation.py:47
+#: kdo/views/invitation.py:48
 msgid "The user has been added to the present's participants successfully."
 msgstr "L'utilisateur a été ajouté aux participant du cadeau avec succès."
 
-#: kdo/views/invitation.py:50
+#: kdo/views/invitation.py:51
 msgid ""
 "An email has been sent to the user inviting them to participate to this "
 "present."
 msgstr ""
 "Un courriel a été envoyé à l'utilisateur l'invitant à participer à ce cadeau."
 
-#: kdo/views/invitation.py:54
+#: kdo/views/invitation.py:55
 #, python-format
 msgid ""
 "The user \"%(email_address)s\" has already been invited to this present."
 msgstr "L'utilisateur \"%(email_address)s\" a déja été invité pour ce cadeau."
 
-#: kdo/views/invitation.py:65
+#: kdo/views/invitation.py:66
 #, python-format
 msgid ""
 "Hello,\n"
@@ -394,12 +394,12 @@ msgstr ""
 "\n"
 "Nous espérons vous voir bientôt sur notre site,L'équipe KDO"
 
-#: kdo/views/invitation.py:80
+#: kdo/views/invitation.py:81
 #, python-format
 msgid "[%s] Invitation to participate"
 msgstr "[%s] Invitation à participater"
 
-#: kdo/views/invitation.py:92
+#: kdo/views/invitation.py:93
 msgid "The invitation has been redeemed successfully."
 msgstr "L'invitation a été validée avec succès."
 
@@ -418,6 +418,31 @@ msgstr "Le cadeau a été supprimé avec succès."
 #: kdo/views/present.py:155
 msgid "The user has been removed from the present's participants successfully."
 msgstr "L'utilisateur a été retiré des participants au cadeau avec succès."
+
+#: templates/404.html:6 templates/500.html:6
+msgid "Oops..."
+msgstr "Oups..."
+
+#: templates/404.html:8
+msgid "The page you're trying to access doesn't exist."
+msgstr "La page à laquelle vous tentez d'accéder n'existe pas."
+
+#: templates/404.html:11
+msgid "If you think it should exist, contact the owner of this website."
+msgstr ""
+"Si vous pensez qu'elle devrait exister, contactez le propriétaire de ce site."
+
+#: templates/500.html:8
+msgid "You broke the internet."
+msgstr "Vous avez cassé l'internet."
+
+#: templates/500.html:11
+msgid ""
+"The Elders of the Internet have been warned. They'll get to the issue when "
+"they have some time."
+msgstr ""
+"Les Sages de l'Internet ont été prévenus. Ils se pencheront sur le problème "
+"quand ils auront un peu de temps."
 
 #: templates/basedelete.html:8
 #, python-format
@@ -470,6 +495,13 @@ msgstr "Se déconnecter"
 #: templates/registration/login.html:10
 msgid "Incorrect username/password. Please try again."
 msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
+
+#~ msgid ""
+#~ "The admin of the site has received an email with the details of the "
+#~ "error. Hopefully it will be fixed soon."
+#~ msgstr ""
+#~ "L'administrateur de ce site a reçu un email avec les détails de l'erreur. "
+#~ "Le problème devrait normalement être réglé sous peu."
 
 #, fuzzy
 #~ msgid "sent by"
