@@ -1,0 +1,497 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: noyel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-18 01:37+0100\n"
+"PO-Revision-Date: 2012-11-18 01:35+0100\n"
+"Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: account/forms.py:14
+msgid "Your username cannot contain a \"@\"."
+msgstr "Votre identifiant ne peut pas contenir le caractère \"@\""
+
+#: account/views.py:64
+msgid "Your profile has been updated successfully."
+msgstr "Votre profil a été mis à jour avec succès."
+
+#: account/views.py:77
+msgid "Your password has been changed successfully."
+msgstr "Votre mot de passe a été mis à jour avec succès."
+
+#: account/templates/account/logged_out.html:6
+msgid "Logout successful"
+msgstr "Déconnexion complétée avec succès"
+
+#: account/templates/account/logged_out.html:7
+msgid "Come back anytime."
+msgstr "Revenez quand vous voulez."
+
+#: account/templates/account/login_required.html:6
+msgid "Login required"
+msgstr "Connexion requise"
+
+#: account/templates/account/login_required.html:8
+msgid ""
+"The page you tried to access is restricted to authenticated users.\n"
+"Please use the form at the top of the page to sign in."
+msgstr ""
+"La page à laquelle vous avez tenté d'accéder nécessite d'être authentifié.\n"
+"Merci d'utiliser le formulaire en haut de la page pour vous connecter."
+
+#: account/templates/account/password_update.html:5
+#: account/templates/account/profile_update.html:5
+#: account/templates/account/profile_update.html:15
+#: kdo/templates/kdo/present_detail.html:12 templates/baseform.html:24
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: account/templates/account/profile_update.html:11
+#: templates/navbar_anonymous.html:24
+msgid "Password"
+msgstr "Mot de passe"
+
+#: account/templates/account/signup.html:5
+#: account/templates/account/signup.html:6 templates/navbar_anonymous.html:10
+msgid "Sign up"
+msgstr "Inscription"
+
+#: account/templates/account/signup_success.html:6
+msgid "Sign up successful"
+msgstr "Inscription complétée avec succès"
+
+#: account/templates/account/signup_success.html:8
+msgid "You can now sign in using the form on the top left of the page."
+msgstr ""
+"Vous pouvez désormais vous connecter en utilisant le formulaire en haut à "
+"droite de la page."
+
+#: account/templates/account/welcome.html:8
+msgid ""
+"This website lets you collaborate on planning presents for friends, family, "
+"or your archnemesis."
+msgstr ""
+"Ce site vous permet d'organiser en collaborant l'achat de cadeaux pour vos "
+"amis, votre famille ou votre ennemi juré."
+
+#: account/templates/account/welcome.html:12
+#, python-format
+msgid ""
+"You can sign in using the form available at the top of the page.\n"
+"If you don't have an account, head to the <a href=\"%(signup_url)s\">signup "
+"page</a>\n"
+"and register for free.\n"
+msgstr ""
+"Vous pouvez vous connecter en utilisant le formulaire en haut de la page.\n"
+"Si vous n'avez pas encore de compte, dirigez-vous vers la <a href="
+"\"%(signup_url)s\">page d'inscription</a>\n"
+"et créez-en un gratuitement.\n"
+
+#: kdo/forms.py:65
+msgid "user"
+msgstr "utilisateur"
+
+#: kdo/forms.py:65
+msgid "Username or email"
+msgstr "Identifiant ou adresse électronique"
+
+#: kdo/forms.py:90
+msgid "User unknown. Try contacting them using their email address."
+msgstr ""
+"Utilisateur inconnu. Essayez de le contacter en utilisant plutôt son adresse "
+"électronique."
+
+#: kdo/forms.py:105 kdo/models.py:80
+msgid "token"
+msgstr "jeton"
+
+#: kdo/forms.py:108
+msgid "This token is invalid."
+msgstr "Ce jeton est invalide."
+
+#: kdo/models.py:19
+msgid "rejected"
+msgstr "rejeté"
+
+#: kdo/models.py:20
+msgid "suggested"
+msgstr "suggéré"
+
+#: kdo/models.py:21
+msgid "accepted"
+msgstr "accepté"
+
+#: kdo/models.py:22
+msgid "bought"
+msgstr "acheté"
+
+#: kdo/models.py:24 kdo/templates/kdo/present_list.html:9
+msgid "title"
+msgstr "titre"
+
+#: kdo/models.py:25 kdo/templates/kdo/invitation_list.html:12
+#: kdo/templates/kdo/present_detail.html:26
+#: kdo/templates/kdo/present_list.html:10
+msgid "giftee"
+msgstr "destinataire"
+
+#: kdo/models.py:26 kdo/templates/kdo/present_detail.html:38
+#: kdo/templates/kdo/present_list.html:11
+msgid "description"
+msgstr "description"
+
+#: kdo/models.py:27 kdo/templates/kdo/present_detail.html:48
+msgid "link"
+msgstr "lien"
+
+#: kdo/models.py:28 kdo/templates/kdo/present_detail.html:43
+msgid "price"
+msgstr "prix"
+
+#: kdo/models.py:30
+msgid "status"
+msgstr "état"
+
+#: kdo/models.py:34 kdo/templates/kdo/present_detail.html:60
+msgid "participants"
+msgstr "participants"
+
+#: kdo/models.py:36
+msgid "added on"
+msgstr "ajouté le"
+
+#: kdo/models.py:37 kdo/templates/kdo/present_detail.html:56
+msgid "updated on"
+msgstr "mis à jour le"
+
+#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:81
+#: kdo/templates/kdo/invitation_list.html:11
+msgid "present"
+msgstr "cadeau"
+
+#: kdo/models.py:41
+msgid "presents"
+msgstr "cadeaux"
+
+#: kdo/models.py:68
+msgid "author"
+msgstr "auteur"
+
+#: kdo/models.py:69
+msgid "text"
+msgstr "texte"
+
+#: kdo/models.py:70
+msgid "posted on"
+msgstr "envoyé le"
+
+#: kdo/models.py:73
+msgid "comment"
+msgstr "commentaire"
+
+#: kdo/models.py:74 kdo/templates/kdo/present_list.html:12
+msgid "comments"
+msgstr "commentaires"
+
+#: kdo/models.py:82 kdo/templates/kdo/invitation_list.html:9
+msgctxt "invitation"
+msgid "sent by"
+msgstr "envoyée par"
+
+#: kdo/models.py:83
+msgctxt "invitation"
+msgid "sent to"
+msgstr "envoyée à"
+
+#: kdo/models.py:84 kdo/templates/kdo/invitation_list.html:10
+msgctxt "invitation"
+msgid "sent on"
+msgstr "envoyée le"
+
+#: kdo/models.py:87
+msgid "invitation"
+msgstr "invitation"
+
+#: kdo/models.py:88
+msgid "invitations"
+msgstr "invitations"
+
+#: kdo/templates/kdo/invitation_list.html:6
+msgid "List of invitations"
+msgstr "Liste des invitations"
+
+#: kdo/templates/kdo/invitation_list.html:13
+msgid "actions"
+msgstr "actions"
+
+#: kdo/templates/kdo/invitation_list.html:27
+msgid "redeem"
+msgstr "valider"
+
+#: kdo/templates/kdo/invite_participant.html:7
+msgid "Invite"
+msgstr "Inviter"
+
+#: kdo/templates/kdo/landing.html:7
+msgid "Latest presents"
+msgstr "Derniers cadeaux"
+
+#: kdo/templates/kdo/landing.html:13
+#, python-format
+msgid "for <a href=\"%(giftee_url)s\">%(giftee)s</a>"
+msgstr "pour <a href=\"%(giftee_url)s\">%(giftee)s</a>"
+
+#: kdo/templates/kdo/landing.html:17
+msgid "Latest comments"
+msgstr "Derniers commentaires"
+
+#: kdo/templates/kdo/landing.html:27
+msgid "for present"
+msgstr "pour le cadeau"
+
+#: kdo/templates/kdo/landing.html:33 kdo/templates/kdo/present_detail.html:103
+#, python-format
+msgid "on %(date)s at %(time)s"
+msgstr "le %(date)s à %(time)s"
+
+#: kdo/templates/kdo/landing.html:40
+msgid "Are you new here?"
+msgstr "Vous êtes nouveau ici ?"
+
+#: kdo/templates/kdo/landing.html:42
+#, python-format
+msgid ""
+"It seems that you're not participating in any present.\n"
+"Try <a href=\"%(new_present_url)s\">creating one</a> or ask your friends to "
+"add\n"
+"you to an existing one."
+msgstr ""
+"On dirait que vous ne participez pour le moment à aucun cadeau.\n"
+"Vous pouvez <a href=\"%(new_present_url)s\">en créer un</a> ou bien "
+"demander\n"
+"à vos amis de vous ajouter à un cadeau existant."
+
+#: kdo/templates/kdo/present_create.html:5
+#: kdo/templates/kdo/present_list.html:35
+#: templates/navbar_authenticated.html:20
+msgid "Add a present"
+msgstr "Ajouter un cadeau"
+
+#: kdo/templates/kdo/present_detail.html:17
+msgid "Delete"
+msgstr "Supprimer"
+
+#: kdo/templates/kdo/present_detail.html:31
+#, python-format
+msgid "%(matching)s other"
+msgid_plural " %(matching)s others"
+msgstr[0] "%(matching)s autre"
+msgstr[1] "%(matching)s autres"
+
+#: kdo/templates/kdo/present_detail.html:52
+msgid "created on"
+msgstr "créé le"
+
+#: kdo/templates/kdo/present_detail.html:69
+msgid "Remove"
+msgstr "Retirer"
+
+#: kdo/templates/kdo/present_detail.html:84
+msgid "Invite a participant"
+msgstr "Inviter un participant"
+
+#: kdo/templates/kdo/present_detail.html:93
+msgid "Comments"
+msgstr "Commentaires"
+
+#: kdo/templates/kdo/present_detail.html:109
+msgid "Update this comment"
+msgstr "Mettre à jour ce commentaire"
+
+#: kdo/templates/kdo/present_detail.html:114
+msgid "Delete this comment"
+msgstr "Supprimer ce commentaire"
+
+#: kdo/templates/kdo/present_detail.html:128
+msgid "Add a comment"
+msgstr "Ajouter un commentaire"
+
+#: kdo/templates/kdo/present_list.html:6
+#: templates/navbar_authenticated.html:15
+msgid "List of all presents"
+msgstr "Liste des cadeaux"
+
+#: kdo/templates/kdo/present_list_for_giftee.html:6
+#, python-format
+msgid "Gifts for %(giftee)s"
+msgstr "Cadeaux pour %(giftee)s"
+
+#: kdo/templates/kdo/present_update.html:6
+#, python-format
+msgid "Update the present \"%(present)s\""
+msgstr "Mise à jour du cadeau \"%(present)s\""
+
+#: kdo/views/comment.py:18
+msgid "The comment has been created successfully."
+msgstr "Le commentaire a été créé avec succès."
+
+#: kdo/views/comment.py:46
+msgid "The comment has been updated successfully."
+msgstr "Le commentaire a été mis à jour avec succès."
+
+#: kdo/views/comment.py:62
+msgid "The comment has been deleted successfully."
+msgstr "Le commentaire a été supprimé avec succès."
+
+#: kdo/views/invitation.py:47
+msgid "The user has been added to the present's participants successfully."
+msgstr "L'utilisateur a été ajouté aux participant du cadeau avec succès."
+
+#: kdo/views/invitation.py:50
+msgid ""
+"An email has been sent to the user inviting them to participate to this "
+"present."
+msgstr ""
+"Un courriel a été envoyé à l'utilisateur l'invitant à participer à ce cadeau."
+
+#: kdo/views/invitation.py:54
+#, python-format
+msgid ""
+"The user \"%(email_address)s\" has already been invited to this present."
+msgstr "L'utilisateur \"%(email_address)s\" a déja été invité pour ce cadeau."
+
+#: kdo/views/invitation.py:65
+#, python-format
+msgid ""
+"Hello,\n"
+"\n"
+"This email is to inform you that the user %(from_user)s has invited you to \n"
+"participate on our site %(site_name)s (%(site_url)s).\n"
+"\n"
+"To redeem this invitation, open the following link in your browser:\n"
+"http://%(invitation_url)s\n"
+"\n"
+"We hope to see you soon on our website,\n"
+"The KDO team."
+msgstr ""
+"Bonjour,\n"
+"\n"
+"L'utilisateur %(from_user)s vient de vous inviter à participer sur notre \n"
+"site %(site_name)s (%(site_url)s).\n"
+"\n"
+"Pour valider cette invitation, ouvrez ce lien dans votre navigateur :\n"
+"http://%(invitation_url)s\n"
+"\n"
+"Nous espérons vous voir bientôt sur notre site,L'équipe KDO"
+
+#: kdo/views/invitation.py:80
+#, python-format
+msgid "[%s] Invitation to participate"
+msgstr "[%s] Invitation à participater"
+
+#: kdo/views/invitation.py:92
+msgid "The invitation has been redeemed successfully."
+msgstr "L'invitation a été validée avec succès."
+
+#: kdo/views/present.py:86
+msgid "The present has been created successfully."
+msgstr "Le cadeau a été créé avec succès."
+
+#: kdo/views/present.py:120
+msgid "The present has been updated successfully."
+msgstr "Le cadeau a été mis à jour avec succès."
+
+#: kdo/views/present.py:136
+msgid "The present has been deleted successfully."
+msgstr "Le cadeau a été supprimé avec succès."
+
+#: kdo/views/present.py:155
+msgid "The user has been removed from the present's participants successfully."
+msgstr "L'utilisateur a été retiré des participants au cadeau avec succès."
+
+#: templates/basedelete.html:8
+#, python-format
+msgid "Are you sure you want to delete the object \"%(object)s\"?"
+msgstr "Êtes-vous sûr(e) de vouloir supprimer l'objet \"%(object)s\" ?"
+
+#: templates/basedelete.html:12
+msgid "Yes, delete"
+msgstr "Oui, supprimer"
+
+#: templates/basedelete.html:15
+msgid "No, go back"
+msgstr "Non, revenir en arrière"
+
+#: templates/baseform.html:25
+msgid "Create"
+msgstr "Créer"
+
+#: templates/baseform.html:34
+msgid "Cancel"
+msgstr "Annuler"
+
+#: templates/navbar_anonymous.html:19
+msgid "Username"
+msgstr "Identifiant"
+
+#: templates/navbar_anonymous.html:28
+msgid "Sign in"
+msgstr "Se connecter"
+
+#: templates/navbar_authenticated.html:10
+msgid "Landing"
+msgstr "Accueil"
+
+#: templates/navbar_authenticated.html:29
+#, python-format
+msgid "%(count)s invitation pending"
+msgid_plural "%(count)s invitations pending"
+msgstr[0] "%(count)s invitation en attente"
+msgstr[1] "%(count)s invitations en attente"
+
+#: templates/navbar_authenticated.html:37
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/navbar_authenticated.html:41
+msgid "Sign out"
+msgstr "Se déconnecter"
+
+#: templates/registration/login.html:10
+msgid "Incorrect username/password. Please try again."
+msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
+
+#, fuzzy
+#~ msgid "sent by"
+#~ msgstr "envoyée par"
+
+#, fuzzy
+#~ msgid "sent on"
+#~ msgstr "envoyée le"
+
+#~ msgid "valid for"
+#~ msgstr "valide pendant"
+
+#~ msgid "in hours"
+#~ msgstr "heures"
+
+#~ msgid "Add"
+#~ msgstr "Ajouter"
+
+#, fuzzy
+#~ msgid "Add participant"
+#~ msgstr "Ajouter un participant"
+
+#, fuzzy
+#~ msgid "password"
+#~ msgstr "Mot de passe"

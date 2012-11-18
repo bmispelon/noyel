@@ -1,0 +1,29 @@
+from django import template
+
+from noyel.kdo.forms import CommentCreateForm
+from noyel.kdo.models import Invitation
+
+register = template.Library()
+
+@register.filter
+def count_matching_giftee(present, user):
+    """Return the number of presents that have the same giftee as the given
+    present and for which the given user is a participant.
+    
+    """
+    return present.matching_giftee(user).count()
+
+@register.filter
+def comment_form(present, user):
+    """Return an instance of a CommentCreateForm for the given present and user.
+    
+    """
+    return CommentCreateForm(present=present, user=user)
+
+@register.assignment_tag
+def invitation_count(user):
+    """Return the number of invitations the given user has (including expired
+    ones).
+    
+    """
+    return Invitation.objects.filter(sent_to=user.email).count()

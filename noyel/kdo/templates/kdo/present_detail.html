@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% load i18n kdo %}
+
+{% block content %}
+
+
+{% if user in object.participants.all %}
+<div class="btn-group pull-right">
+    <a class="btn btn-primary"
+       href="{% url 'kdo-present-update' object.pk %}?next={{ request.get_full_path|urlencode }}"
+       title="{% trans 'Update' %}">
+        <i class="icon-pencil icon-white"></i>
+    </a>
+    <a class="btn btn-danger"
+       href="{% url 'kdo-present-delete' object.pk %}"
+       title="{% trans 'Delete' %}">
+        <i class="icon-trash icon-white"></i>
+    </a>
+</div>
+{% endif %}
+
+
+<h1>{{ object.title }}</h1>
+<dl class="dl-horizontal">
+    <dt>{% filter capfirst %}{% trans 'giftee' %}{% endfilter %}</dt>
+    <dd>{{ object.giftee }}
+    {% with matching=present|count_matching_giftee:user %}
+    {% if matching %}
+        (<a href="{% url 'kdo-present-list-similar' object.pk %}">
+        {% blocktrans count matching=matching %}{{ matching }} other{% plural %} {{ matching }} others{% endblocktrans %}
+        </a>)
+    {% endif %}
+    {% endwith %}
+    </dd>
+    
+    {% if object.description %}
+    <dt>{% filter capfirst %}{% trans 'description' %}{% endfilter %}</dt>
+    <dd>{{ object.description|linebreaks }}</dd>
+    {% endif %}
+    
+    {% if object.price %}
+    <dt>{% filter capfirst %}{% trans 'price' %}{% endfilter %}</dt>
+    <dd>{{ object.price }}&nbsp;€</dd>
+    {% endif %}
+    
+    {% if object.link %}
+    <dt>{% filter capfirst %}{% trans 'link' %}{% endfilter %}</dt>
+    <dd><a href="{{ object.link }}">{{ object.link }}</a></dd>
+    {% endif %}
+    
+    <dt>{% filter capfirst %}{% trans 'created on' %}{% endfilter %}</dt>
+    <dd>{{ object.created_on|date }}</dd>
+    
+    {% if object.created_on != object.updated_on %}
+    <dt>{% filter capfirst %}{% trans 'updated on' %}{% endfilter %}</dt>
+    <dd>{{ object.updated_on|date }}</dd>
+    {% endif %}
+    
+    <dt>{% filter capfirst %}{% trans 'participants' %}{% endfilter %}</dt>
+    <dd><ul class="unstyled participants">
+        {% for participant in object.participants.all %}
+            <li>
+                <span class="label{% if participant.pk == user.pk %} label-inverse{% endif %}">
+                {{ participant.username }}
+                {% if participant.pk != user.pk %}
+                    <form action="{% url 'kdo-present-remove-participant' object.pk participant.pk %}"
+                          method="post">
+                        <button title="{% trans 'Remove' %}">
+                            <i class="icon-trash"></i>
+                        </button>
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        {% csrf_token %}
+                    </form>
+                {% else %}
+                    <i class="icon-heart icon-white"></i>
+                {% endif %}
+                </span>
+            </li>
+        {% endfor %}
+        <li>
+            <span class="label label-info">
+                <a href="{% url 'kdo-present-invite-participant' object.pk %}?next={{ request.get_full_path|urlencode }}"
+                   title="{% trans 'Invite a participant' %}">
+                    <i class="icon-plus icon-white"></i>
+                </a>
+            </span>
+        </li>
+    </ul></dd>
+</ul>
+
+<hr />
+<h2>{% trans 'Comments' %}</h2>
+<ul class="unstyled" id="comments">
+{% for comment in object.comment_set.all %}
+    <li>
+        <blockquote>
+            {{ comment.text|linebreaks }}
+            <small>
+            <span class="user" title="{{ comment.author.username }}">
+                {{ comment.author.first_name }}
+            </span>
+            {% blocktrans with date=comment.posted_on|date time=comment.posted_on|time %}on {{ date }} at {{ time }}{% endblocktrans %}
+            </small>
+        </blockquote>
+        {% if comment.author.pk == user.pk %}
+        <div class="btn-toolbar"><div class="btn-group">
+            <a class="btn btn-small"
+               title="{% trans 'Update this comment' %}"
+               href="{% url 'kdo-comment-update' comment.pk %}?next={{ request.get_full_path|urlencode }}">
+                <i class="icon-pencil"></i>
+            </a>
+            <a class="btn btn-small"
+               title="{% trans 'Delete this comment' %}"
+               href="{% url 'kdo-comment-delete' comment.pk %}?next={{ request.get_full_path|urlencode }}">
+                <i class="icon-trash"></i>
+            </a>
+        </div></div>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% with present|comment_form:user as comment_form %}
+<form action="{% url 'kdo-comment-create' object.pk %}" method="post">
+    {% include 'snippets/field.html' with field=comment_form.text %}
+    <button type="submit" class="btn">
+        <i class="icon-comment"></i>
+        {% trans 'Add a comment' %}
+    </button>
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    {% csrf_token %}
+</form>
+{% endwith %}
+{% endblock content %}

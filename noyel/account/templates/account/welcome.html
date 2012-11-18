@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>Welcome to KDO</h1>
+<p class="lead">
+{% blocktrans %}This website lets you collaborate on planning presents for friends, family, or your archnemesis.{% endblocktrans %}
+</p>
+<p>
+{% url 'kdo-signup' as signup_url %}
+{% blocktrans %}You can sign in using the form available at the top of the page.
+If you don't have an account, head to the <a href="{{ signup_url }}">signup page</a>
+and register for free.
+{% endblocktrans %}
+</p>
+{% endblock %}

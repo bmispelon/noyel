@@ -1,0 +1,9 @@
+{% extends 'kdo/present_list.html' %}
+
+{% load i18n %}
+
+{% block table_title %}
+    {% blocktrans %}Gifts for {{ giftee }}{% endblocktrans %}
+{% endblock %}
+
+{% block create_present_url %}{% url 'kdo-present-create-for-giftee' giftee %}{% endblock %}

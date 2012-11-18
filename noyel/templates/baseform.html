@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+{% block form_before %}
+<h1>{% block form_title %}{% endblock %}</h1>
+{% endblock form_before %}
+
+<form action="{% block form_action %}{% endblock %}"
+      method="{% block form_method %}post{% endblock %}"
+      class="{% block form_class %}form-horizontal{% endblock %}">
+    {% block form_before_fields %}{% endblock %}
+    {% block form_fields %}
+        {% include 'snippets/form.html' %}
+    {% endblock %}
+    {% block form_after_fields %}{% endblock %}
+    {% block form_actions %}
+    <div class="form-actions">
+        {% block form_submit %}
+        <button type="submit" class="btn btn-primary">
+            {% block form_submit_before_text %}{% endblock %}
+            {% block form_submit_text %}
+                {% if object %}{% trans 'Update' %}
+                {% else %}{% trans 'Create' %}{% endif %}
+            {% endblock %}
+            {% block form_submit_after_text %}{% endblock %}
+        </button>
+        {% endblock form_submit %}
+        
+        {% block form_cancel %}
+        <a class="btn btn-inverse" href="{{ next }}">
+        {% block form_cancel_text %}
+            {% trans 'Cancel' %}
+        {% endblock %}
+        </a>
+        {% endblock form_cancel %}
+        
+        {% block form_hidden %}
+            <input type="hidden" name="next" value="{{ next }}">
+            {% csrf_token %}
+        {% endblock form_hidden %}
+    </div>
+    {% endblock %}
+</form>
+
+{% block form_after %}{% endblock %}
+
+{% endblock %}

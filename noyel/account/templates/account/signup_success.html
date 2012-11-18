@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Sign up successful' %}</h1>
+<p class="text-success lead">
+{% blocktrans %}You can now sign in using the form on the top left of the page.{% endblocktrans %}
+</p>
+{% endblock %}

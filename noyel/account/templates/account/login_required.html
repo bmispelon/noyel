@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans 'Login required' %}</h1>
+<p class="lead">
+{% blocktrans %}The page you tried to access is restricted to authenticated users.
+Please use the form at the top of the page to sign in.{% endblocktrans %}
+</p>
+{% endblock %}

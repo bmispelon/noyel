@@ -1,0 +1,18 @@
+* friends
+* Multiple email addresse
+* User email validation
+* Lost password
+* Search by giftee
+* Merge two presents (participants + comments)
+* Next action in create present form (add another one, see details, see list)
+* See about moving to custom User model (unique email, no @ in username, custom methods)
+* Check that a user cannot access any present-related views where he's not participating.
+* Polish invitation code/workflow
+* inline invitation in present_detail
+* reply-to header in invite email
+* Use email template for invite email
+* Put <title> on most pages
+* show pending invites on present_detail
+* Re-send invitation
+* change language view
+* timezone preferences

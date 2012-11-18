@@ -1,0 +1,7 @@
+{% extends 'kdo/present_create.html' %}
+
+{% load i18n %}
+
+{% block form_title %}
+{% blocktrans with present=object.title %}Update the present "{{ present }}"{% endblocktrans %}
+{% endblock %}

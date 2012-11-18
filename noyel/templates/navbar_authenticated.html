@@ -1,0 +1,46 @@
+{% load i18n kdo %}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{% url 'kdo-landing' %}">KDO</a>
+            <ul class="nav">
+                <li>
+                    <a href="{% url 'kdo-landing' %}">
+                        {% trans 'Landing' %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'kdo-present-list' %}">
+                        {% trans 'List of all presents' %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'kdo-present-create' %}?next={{ request.get_full_path|urlencode }}">
+                        {% trans 'Add a present' %}
+                    </a>
+                </li>
+            </ul>
+            <div class="pull-right">
+                {% invitation_count user as count %}
+                {% if count %}
+                <a href="{% url 'kdo-invitation-list' %}"
+                   class="btn btn-link"
+                   title="{% blocktrans count count=count %}{{ count }} invitation pending{% plural %}{{ count }} invitations pending{% endblocktrans %}">
+                    <i class="icon-envelope icon-white"></i>
+                    <span class="badge badge-important">{{ count }}</span>
+                </a>
+                {% endif %}
+                <a href="{% url 'kdo-profile-update' %}?next={{ request.get_full_path|urlencode }}"
+                   class="btn">
+                    <i class="icon-wrench"></i>
+                    {% trans 'Profile' %}
+                </a>
+                <a href="{% url 'logout' %}" class="btn">
+                    <i class="icon-off"></i>
+                    {% trans 'Sign out' %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

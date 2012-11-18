@@ -1,0 +1,6 @@
+*.pyc
+*.db
+*.log
+*.pid
+env/
+builds/

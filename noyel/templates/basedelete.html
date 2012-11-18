@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<form action="." method="post">
+<p>
+{% blocktrans %}Are you sure you want to delete the object "{{ object }}"?{% endblocktrans %}
+</p>
+<p class="form-actions">
+    <button type="submit" class="btn btn-danger">
+        {% trans 'Yes, delete' %}
+    </button>
+    <a href="{{ next }}" class="btn btn-inverse">
+        {% trans 'No, go back' %}
+    </a>
+    <input type="hidden" name="next" value="{{ next }}">
+    {% csrf_token %}
+</p>
+</form>
+{% endblock %}

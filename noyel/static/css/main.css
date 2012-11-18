@@ -1,0 +1,14 @@
+ul.participants li {
+    display: inline;
+    margin-right: 10px;
+}
+
+ul.participants li form {
+    display: inline;
+}
+
+ul.participants li form button {
+    border: 0;
+    background: none;
+    padding: 0;
+}

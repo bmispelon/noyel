@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+{% if latest_presents %}
+<h2>{% trans 'Latest presents' %}</h2>
+<ul class="unstyled">
+{% for present in latest_presents %}
+    <li>
+        <a href="{% url 'kdo-present-detail' present.pk %}">{{ present.title }}</a>
+        {% url 'kdo-present-list-for-giftee' present.giftee as giftee_url %}
+        {% blocktrans with giftee=present.giftee %}for <a href="{{ giftee_url }}">{{ giftee }}</a>{% endblocktrans %}
+    </li>
+{% endfor %}
+</ul>
+<h2>{% trans 'Latest comments' %}</h2>
+<ul class="unstyled">
+{% for comment in latest_comments %}
+    <li>
+        <blockquote>
+            {{ comment.text|linebreaks }}
+            <small>
+            <span class="user" title="{{ comment.author.username }}">
+                {{ comment.author.first_name }}
+            </span>
+            {% trans 'for present' %}
+            <cite>
+                <a href="{% url 'kdo-present-detail' comment.present.pk %}#comments">
+                    {{ comment.present.title }}
+                </a>
+            </cite>
+            {% blocktrans with date=comment.posted_on|date time=comment.posted_on|time %}on {{ date }} at {{ time }}{% endblocktrans %}
+            </small>
+        </blockquote>
+    </li>
+{% endfor %}
+</ul>
+{% else %}{# No presents in the list. The user is probably new #}
+<h1>{% trans 'Are you new here?' %}</h1>
+{% url 'kdo-present-create' as new_present_url %}
+{% blocktrans %}It seems that you're not participating in any present.
+Try <a href="{{ new_present_url }}">creating one</a> or ask your friends to add
+you to an existing one.{% endblocktrans %}
+{% endif %}
+{% endblock %}

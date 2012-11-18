@@ -1,0 +1,12 @@
+{% extends 'account/welcome.html' %}
+
+{% load i18n %}
+
+{% block navbar %}
+    {% include 'registration/navbar_login.html' %}
+{% endblock navbar %}
+
+{% block messages_extra_top %}
+    {% trans 'Incorrect username/password. Please try again.' as message %}
+    {% include 'snippets/message_li.html' with level='error' %}
+{% endblock %}
