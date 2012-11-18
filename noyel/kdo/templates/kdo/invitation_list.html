@@ -23,8 +23,8 @@
                 <form action="{% url 'kdo-redeem-invitation' %}"
                       method="post">
                 <button type="submit" class="btn">
-                    <i class="icon-eye-open"></i>
-                    {% trans 'redeem' %}
+                    <i class="icon-ok"></i>
+                    {% trans 'redeem'|capfirst %}
                 </button>
                 <input type="hidden" name="token" value="{{ invitation.token }}">
                 <input type="hidden" name="next" value="{{ request.get_full_path }}">
