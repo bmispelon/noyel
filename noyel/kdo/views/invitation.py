@@ -10,6 +10,7 @@ from django.views import generic
 from noyel.kdo import forms as kdo_forms
 from noyel.kdo.mixins import LoginRequiredMixin
 from noyel.kdo.models import Present, Invitation
+from noyel.kdo.emails import InvitationEmail
 
 from toolbox.messages import MessageMixin, FormMessageMixin
 from toolbox.next import NextMixin
@@ -62,26 +63,9 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
     
     def send_invitation(self, invitation):
         site = get_current_site(self.request)
-        body = _(
-"""Hello,
-
-This email is to inform you that the user %(from_user)s has invited you to 
-participate on our site %(site_name)s (%(site_url)s).
-
-To redeem this invitation, open the following link in your browser:
-http://%(invitation_url)s
-
-We hope to see you soon on our website,
-The KDO team.""") % {
-    'from_user': invitation.sent_by.first_name or invitation.sent_by.username,
-    'site_name': site.name,
-    'site_url': site.domain,
-    'invitation_url': site.domain + reverse('kdo-redeem-invitation-with-token', args=(invitation.token,)),
-}
-        subject = _("[%s] Invitation to participate") % site.domain
-        to = [invitation.sent_to]
-        from_ = settings.DEFAULT_FROM_EMAIL
-        send_mail(subject, body, from_, to)
+        message = InvitationEmail().render({'site': site, 'invitation': invitation})
+        
+        message.send()
 
 invite_participant = InviteParticipantView.as_view()
 

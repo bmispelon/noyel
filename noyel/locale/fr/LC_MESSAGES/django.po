@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 13:59+0100\n"
-"PO-Revision-Date: 2012-11-18 14:01+0100\n"
+"POT-Creation-Date: 2012-11-18 16:20+0100\n"
+"PO-Revision-Date: 2012-11-18 16:21+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -117,6 +117,10 @@ msgstr ""
 "Si vous n'avez pas encore de compte, dirigez-vous vers la <a href="
 "\"%(signup_url)s\">page d'inscription</a>\n"
 "et créez-en un gratuitement.\n"
+
+#: kdo/emails.py:10
+msgid "[{{ site.domain }}] Invitation to participate"
+msgstr "[{{ site.domain }}] Invitation à participer"
 
 #: kdo/forms.py:65
 msgid "user"
@@ -397,53 +401,24 @@ msgstr "Le commentaire a été mis à jour avec succès."
 msgid "The comment has been deleted successfully."
 msgstr "Le commentaire a été supprimé avec succès."
 
-#: kdo/views/invitation.py:48
+#: kdo/views/invitation.py:49
 msgid "The user has been added to the present's participants successfully."
 msgstr "L'utilisateur a été ajouté aux participant du cadeau avec succès."
 
-#: kdo/views/invitation.py:51
+#: kdo/views/invitation.py:52
 msgid ""
 "An email has been sent to the user inviting them to participate to this "
 "present."
 msgstr ""
 "Un courriel a été envoyé à l'utilisateur l'invitant à participer à ce cadeau."
 
-#: kdo/views/invitation.py:55
+#: kdo/views/invitation.py:56
 #, python-format
 msgid ""
 "The user \"%(email_address)s\" has already been invited to this present."
 msgstr "L'utilisateur \"%(email_address)s\" a déja été invité pour ce cadeau."
 
-#: kdo/views/invitation.py:66
-#, python-format
-msgid ""
-"Hello,\n"
-"\n"
-"This email is to inform you that the user %(from_user)s has invited you to \n"
-"participate on our site %(site_name)s (%(site_url)s).\n"
-"\n"
-"To redeem this invitation, open the following link in your browser:\n"
-"http://%(invitation_url)s\n"
-"\n"
-"We hope to see you soon on our website,\n"
-"The KDO team."
-msgstr ""
-"Bonjour,\n"
-"\n"
-"L'utilisateur %(from_user)s vient de vous inviter à participer sur notre \n"
-"site %(site_name)s (%(site_url)s).\n"
-"\n"
-"Pour valider cette invitation, ouvrez ce lien dans votre navigateur :\n"
-"http://%(invitation_url)s\n"
-"\n"
-"Nous espérons vous voir bientôt sur notre site,L'équipe KDO"
-
-#: kdo/views/invitation.py:81
-#, python-format
-msgid "[%s] Invitation to participate"
-msgstr "[%s] Invitation à participer"
-
-#: kdo/views/invitation.py:93
+#: kdo/views/invitation.py:77
 msgid "The invitation has been redeemed successfully."
 msgstr "L'invitation a été validée avec succès."
 
@@ -547,6 +522,30 @@ msgstr "Erreur de connection"
 #: templates/registration/login.html:12
 msgid "Incorrect username/password. Please try again."
 msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
+
+#~ msgid ""
+#~ "Hello,\n"
+#~ "\n"
+#~ "This email is to inform you that the user %(from_user)s has invited you "
+#~ "to \n"
+#~ "participate on our site %(site_name)s (%(site_url)s).\n"
+#~ "\n"
+#~ "To redeem this invitation, open the following link in your browser:\n"
+#~ "http://%(invitation_url)s\n"
+#~ "\n"
+#~ "We hope to see you soon on our website,\n"
+#~ "The KDO team."
+#~ msgstr ""
+#~ "Bonjour,\n"
+#~ "\n"
+#~ "L'utilisateur %(from_user)s vient de vous inviter à participer sur "
+#~ "notre \n"
+#~ "site %(site_name)s (%(site_url)s).\n"
+#~ "\n"
+#~ "Pour valider cette invitation, ouvrez ce lien dans votre navigateur :\n"
+#~ "http://%(invitation_url)s\n"
+#~ "\n"
+#~ "Nous espérons vous voir bientôt sur notre site,L'équipe KDO"
 
 #~ msgid ""
 #~ "The admin of the site has received an email with the details of the "

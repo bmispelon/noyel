@@ -1,0 +1,9 @@
+Hello,
+
+This email is to inform you that the user {{ invitation.sent_by.username }} has invited you to participate on our site {{ site.name }} ({{ site.domain }}).
+
+To redeem this invitation, open the following link in your browser:
+http://{{ site.domain }}{% url 'kdo-redeem-invitation-with-token' invitation.token %}
+
+We hope to see you soon on our website,
+The KDO team.

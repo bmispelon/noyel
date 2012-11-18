@@ -1,0 +1,10 @@
+Bonjour,
+
+L'utilisateur {{ invitation.sent_by.username }} vient de vous inviter à
+participer sur notre site {{ site.name }} ({{ site.domain }}).
+
+Pour valider cette invitation, ouvrez ce lien dans votre navigateur :
+http://{{ site.domain }}{% url 'kdo-redeem-invitation-with-token' invitation.token %}
+
+Nous espérons vous voir bientôt sur notre site,
+L'équipe KDO
