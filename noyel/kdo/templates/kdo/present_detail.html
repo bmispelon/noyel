@@ -23,7 +23,7 @@
 
 <h1>{{ object.title }}</h1>
 <dl class="dl-horizontal">
-    <dt>{% filter capfirst %}{% trans 'giftee' %}{% endfilter %}</dt>
+    <dt>{% trans 'giftee'|capfirst %}</dt>
     <dd>{{ object.giftee }}
     {% with matching=present|count_matching_giftee:user %}
     {% if matching %}
@@ -35,29 +35,29 @@
     </dd>
     
     {% if object.description %}
-    <dt>{% filter capfirst %}{% trans 'description' %}{% endfilter %}</dt>
+    <dt>{% trans 'description'|capfirst %}</dt>
     <dd>{{ object.description|linebreaks }}</dd>
     {% endif %}
     
     {% if object.price %}
-    <dt>{% filter capfirst %}{% trans 'price' %}{% endfilter %}</dt>
+    <dt>{% trans 'price'|capfirst %}</dt>
     <dd>{{ object.price }}&nbsp;€</dd>
     {% endif %}
     
     {% if object.link %}
-    <dt>{% filter capfirst %}{% trans 'link' %}{% endfilter %}</dt>
+    <dt>{% trans 'link'|capfirst %}</dt>
     <dd><a href="{{ object.link }}">{{ object.link }}</a></dd>
     {% endif %}
     
-    <dt>{% filter capfirst %}{% trans 'created on' %}{% endfilter %}</dt>
+    <dt>{% trans 'created on'|capfirst %}</dt>
     <dd>{{ object.created_on|date }}</dd>
     
     {% if object.created_on != object.updated_on %}
-    <dt>{% filter capfirst %}{% trans 'updated on' %}{% endfilter %}</dt>
+    <dt>{% trans 'updated on'|capfirst %}</dt>
     <dd>{{ object.updated_on|date }}</dd>
     {% endif %}
     
-    <dt>{% filter capfirst %}{% trans 'participants' %}{% endfilter %}</dt>
+    <dt>{% trans 'participants'|capfirst %}</dt>
     <dd><ul class="unstyled participants">
         {% for participant in object.participants.all %}
             <li>

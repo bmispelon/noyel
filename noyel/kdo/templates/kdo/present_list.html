@@ -6,10 +6,10 @@
 <h1>{% block table_title %}{% trans 'List of all presents' %}{% endblock %}</h1>
 <table class="table table-striped table-hover">
     <thead><tr>
-        <th>{% filter capfirst %}{% trans 'title' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'giftee' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'description' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'comments' %}{% endfilter %}</th>
+        <th>{% trans 'title'|capfirst %}</th>
+        <th>{% trans 'giftee'|capfirst %}</th>
+        <th>{% trans 'description'|capfirst %}</th>
+        <th>{% trans 'comments'|capfirst %}</th>
     </tr></thead>
     <tbody>
     {% for present in object_list %}

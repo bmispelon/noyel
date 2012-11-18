@@ -6,11 +6,11 @@
 <h1>{% trans 'List of invitations' %}</h1>
 <table class="table table-striped table-hover">
     <thead><tr>
-        <th>{% filter capfirst %}{% trans 'sent by' context 'invitation' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'sent on' context 'invitation' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'present' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'giftee' %}{% endfilter %}</th>
-        <th>{% filter capfirst %}{% trans 'actions' %}{% endfilter %}</th>
+        <th>{% trans 'sent by'|capfirst context 'invitation' %}</th>
+        <th>{% trans 'sent on'|capfirst context 'invitation' %}</th>
+        <th>{% trans 'present'|capfirst %}</th>
+        <th>{% trans 'giftee'|capfirst %}</th>
+        <th>{% trans 'actions'|capfirst %}</th>
     </tr></thead>
     <tbody>
     {% for invitation in object_list %}
