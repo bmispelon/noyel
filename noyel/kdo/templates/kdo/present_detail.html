@@ -13,7 +13,7 @@
         <i class="icon-pencil icon-white"></i>
     </a>
     <a class="btn btn-danger"
-       href="{% url 'kdo-present-delete' object.pk %}"
+       href="{% url 'kdo-present-delete' object.pk %}?next={{ request.get_full_path|urlencode }}"
        title="{% trans 'Delete' %}">
         <i class="icon-trash icon-white"></i>
     </a>
