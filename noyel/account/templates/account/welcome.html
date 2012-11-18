@@ -2,8 +2,10 @@
 
 {% load i18n %}
 
+{% block title %}{% trans 'Welcome to KDO' %}{% endblock %}
+
 {% block content %}
-<h1>Welcome to KDO</h1>
+<h1>{% trans 'Welcome to KDO' %}</h1>
 <p class="lead">
 {% blocktrans %}This website lets you collaborate on planning presents for friends, family, or your archnemesis.{% endblocktrans %}
 </p>

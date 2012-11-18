@@ -2,6 +2,11 @@
 
 {% load i18n %}
 
+{% block title %}
+    {% if object %}{% trans 'Update' %}
+    {% else %}{% trans 'Create' %}{% endif %}
+{% endblock %}
+
 {% block content %}
 {% block form_before %}
 <h1>{% block form_title %}{% endblock %}</h1>
