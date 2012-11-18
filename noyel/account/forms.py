@@ -4,18 +4,26 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.utils.translation import ugettext as _
 
 
-class SignupForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        fields = ('username', 'first_name', 'email')
-    
+class CleanUsernameMixin(object):
+    """Provide a clean_username method that rejects usernames containing @."""
     def clean_username(self):
         """Disallow @ in usernames."""
-        if '@' in self.cleaned_data['username']:
-            raise forms.ValidationError(_("Your username cannot contain a \"@\"."))
-        return super(SignupForm, self).clean_username()
+        username = self.cleaned_data['username']
+        if '@' in username:
+            error = _("Your username cannot contain a \"@\".")
+            raise forms.ValidationError(error)
+        try:
+            return super(CleanUsernameMixin, self).clean_username()
+        except AttributeError:
+            return username
 
 
-class ProfileUpdateForm(forms.ModelForm):
+class SignupForm(CleanUsernameMixin, UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        fields = ('username', 'first_name', 'email')
+
+
+class ProfileUpdateForm(CleanUsernameMixin, forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'email']
+        fields = ['username', 'first_name', 'email']
