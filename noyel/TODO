@@ -9,9 +9,7 @@
 * Check that a user cannot access any present-related views where he's not participating.
 * Polish invitation code/workflow
 * inline invitation in present_detail
-* show pending invites on present_detail
 * Re-send invitation
-* change language view
 * timezone preferences
 * Dont send an email if the invitation's address belongs to a user
 * Use first_name in invitation typeahead
