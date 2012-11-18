@@ -1,3 +1,5 @@
+from urlparse import urlparse
+
 from django import template
 
 from noyel.kdo.forms import CommentCreateForm
@@ -27,3 +29,17 @@ def invitation_count(user):
     
     """
     return Invitation.objects.filter(sent_to=user.email).count()
+
+@register.filter
+def netloc(url):
+    """Extract the domain part of a given URL.
+    If the given argument is not URL, return it as is.
+    
+    """
+    try:
+        url = str(url)
+    except ValueError:
+        return url
+    
+    netloc = urlparse(url).netloc
+    return netloc or url

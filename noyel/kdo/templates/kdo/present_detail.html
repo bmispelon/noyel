@@ -46,7 +46,7 @@
     
     {% if object.link %}
     <dt>{% trans 'link'|capfirst %}</dt>
-    <dd><a href="{{ object.link }}">{{ object.link }}</a></dd>
+    <dd><a href="{{ object.link }}">{{ object.link|netloc }}</a></dd>
     {% endif %}
     
     <dt>{% trans 'created on'|capfirst %}</dt>
