@@ -6,8 +6,6 @@
 
 {% block content %}
 
-
-{% if user in object.participants.all %}
 <div class="btn-group pull-right">
     <a class="btn btn-primary"
        href="{% url 'kdo-present-update' object.pk %}?next={{ request.get_full_path|urlencode }}"
@@ -20,8 +18,6 @@
         <i class="icon-trash icon-white"></i>
     </a>
 </div>
-{% endif %}
-
 
 <h1>{{ object.title }}</h1>
 <dl class="dl-horizontal">
@@ -60,10 +56,10 @@
     {% endif %}
     
     <dt>{% trans 'participants'|capfirst %}</dt>
-    <dd><ul class="unstyled participants">
+    <dd><ul class="unstyled participants inline">
         {% for participant in object.participants.all %}
             <li>
-                <span class="label{% if participant.pk == user.pk %} label-inverse{% endif %}">
+                <span class="label label-info">
                 {{ participant.username }}
                 {% if participant.pk != user.pk %}
                     <form action="{% url 'kdo-present-remove-participant' object.pk participant.pk %}"
@@ -75,7 +71,7 @@
                         {% csrf_token %}
                     </form>
                 {% else %}
-                    <i class="icon-heart icon-white"></i>
+                    <i class="icon-heart"></i>
                 {% endif %}
                 </span>
             </li>
@@ -89,6 +85,29 @@
             </span>
         </li>
     </ul></dd>
+    
+    {% with pending=object.invitation_set.all %}
+    {% if pending %}
+        <dt>{% trans 'invitations'|capfirst %}</dt>
+        <dd>
+            <ul class="unstyled inline">
+            {% for invitation in pending %}
+                <li>
+                    <span class="label">
+                        <span title="{% blocktrans with since=invitation.sent_on|timesince %}{{ since }} ago{% endblocktrans %}">
+                            {{ invitation.sent_to }}
+                        </span>
+                        <a href="{% url 'kdo-invitation-delete' invitation.token %}?next={{ request.get_full_path|urlencode }}"
+                           title="{% trans 'delete'|capfirst %}">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </span>
+                </li>
+            {% endfor %}
+            </ul>
+        </dd>
+    {% endif %}
+    {% endwith %}
 </ul>
 
 <hr />

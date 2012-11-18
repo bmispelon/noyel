@@ -38,5 +38,6 @@ urlpatterns.extend(patterns('noyel.kdo.views.invitation',
 
     url(r'^invitations/$', 'list', name='kdo-invitation-list'),
     url(r'^invitations/redeem/$', 'redeem', name='kdo-redeem-invitation'),
-    url(r'^invitations/redeem/(?P<token>\w+)/$', 'redeem_with_token', name='kdo-redeem-invitation-with-token'),
+    url(r'^invitations/(?P<token>\w+)/redeem/$', 'redeem_with_token', name='kdo-redeem-invitation-with-token'),
+    url(r'^invitations/(?P<token>\w+)/delete/$', 'delete', name='kdo-invitation-delete'),
 ))

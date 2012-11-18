@@ -1,4 +1,5 @@
-ul.participants li {
+ul.inline li,
+ol.inline li {
     display: inline;
     margin-right: 10px;
 }

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-18 16:20+0100\n"
-"PO-Revision-Date: 2012-11-18 16:21+0100\n"
+"POT-Creation-Date: 2012-11-18 17:37+0100\n"
+"PO-Revision-Date: 2012-11-18 17:37+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -118,7 +118,7 @@ msgstr ""
 "\"%(signup_url)s\">page d'inscription</a>\n"
 "et créez-en un gratuitement.\n"
 
-#: kdo/emails.py:10
+#: kdo/emails.py:14
 msgid "[{{ site.domain }}] Invitation to participate"
 msgstr "[{{ site.domain }}] Invitation à participer"
 
@@ -136,7 +136,7 @@ msgstr ""
 "Utilisateur inconnu. Essayez de le contacter en utilisant plutôt son adresse "
 "électronique."
 
-#: kdo/forms.py:105 kdo/models.py:80
+#: kdo/forms.py:105 kdo/models.py:87
 msgid "token"
 msgstr "jeton"
 
@@ -199,7 +199,7 @@ msgstr "ajouté le"
 msgid "updated on"
 msgstr "mis à jour le"
 
-#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:81
+#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:88
 #: kdo/templates/kdo/invitation_list.html:13
 msgid "present"
 msgstr "cadeau"
@@ -220,34 +220,34 @@ msgstr "texte"
 msgid "posted on"
 msgstr "envoyé le"
 
-#: kdo/models.py:73
+#: kdo/models.py:80
 msgid "comment"
 msgstr "commentaire"
 
-#: kdo/models.py:74 kdo/templates/kdo/present_list.html:14
+#: kdo/models.py:81 kdo/templates/kdo/present_list.html:14
 msgid "comments"
 msgstr "commentaires"
 
-#: kdo/models.py:82
+#: kdo/models.py:89
 msgctxt "invitation"
 msgid "sent by"
 msgstr "envoyée par"
 
-#: kdo/models.py:83
+#: kdo/models.py:90
 msgctxt "invitation"
 msgid "sent to"
 msgstr "envoyée à"
 
-#: kdo/models.py:84
+#: kdo/models.py:91
 msgctxt "invitation"
 msgid "sent on"
 msgstr "envoyée le"
 
-#: kdo/models.py:87
+#: kdo/models.py:97
 msgid "invitation"
 msgstr "invitation"
 
-#: kdo/models.py:88
+#: kdo/models.py:98
 msgid "invitations"
 msgstr "invitations"
 
@@ -301,7 +301,7 @@ msgstr "Derniers commentaires"
 msgid "for present"
 msgstr "pour le cadeau"
 
-#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:105
+#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:128
 #, python-format
 msgid "on %(date)s at %(time)s"
 msgstr "le %(date)s à %(time)s"
@@ -354,18 +354,31 @@ msgid "Invite a participant"
 msgstr "Inviter un participant"
 
 #: kdo/templates/kdo/present_detail.html:95
+msgid "pending invitations"
+msgstr "invitations en attente"
+
+#: kdo/templates/kdo/present_detail.html:101
+#, python-format
+msgid "%(since)s ago"
+msgstr "il y a %(since)s"
+
+#: kdo/templates/kdo/present_detail.html:105
+msgid "delete"
+msgstr "supprimer"
+
+#: kdo/templates/kdo/present_detail.html:118
 msgid "Comments"
 msgstr "Commentaires"
 
-#: kdo/templates/kdo/present_detail.html:111
+#: kdo/templates/kdo/present_detail.html:134
 msgid "Update this comment"
 msgstr "Mettre à jour ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:116
+#: kdo/templates/kdo/present_detail.html:139
 msgid "Delete this comment"
 msgstr "Supprimer ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:130
+#: kdo/templates/kdo/present_detail.html:153
 msgid "Add a comment"
 msgstr "Ajouter un commentaire"
 
@@ -476,11 +489,11 @@ msgstr ""
 msgid "Are you sure you want to delete the object \"%(object)s\"?"
 msgstr "Êtes-vous sûr(e) de vouloir supprimer l'objet \"%(object)s\" ?"
 
-#: templates/basedelete.html:14
+#: templates/basedelete.html:15
 msgid "Yes, delete"
 msgstr "Oui, supprimer"
 
-#: templates/basedelete.html:17
+#: templates/basedelete.html:18
 msgid "No, go back"
 msgstr "Non, revenir en arrière"
 

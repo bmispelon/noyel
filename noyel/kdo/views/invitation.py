@@ -8,11 +8,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
 from noyel.kdo import forms as kdo_forms
-from noyel.kdo.mixins import LoginRequiredMixin
+from noyel.kdo.mixins import LoginRequiredMixin, UserQuerysetMixin
 from noyel.kdo.models import Present, Invitation
 from noyel.kdo.emails import InvitationEmail
 
-from toolbox.messages import MessageMixin, FormMessageMixin
+from toolbox.messages import MessageMixin, FormMessageMixin, DeleteMessageMixin
 from toolbox.next import NextMixin
 
 
@@ -113,3 +113,20 @@ class ListView(LoginRequiredMixin, generic.ListView):
         return base.select_related('present', 'sent_by').order_by('sent_on')
 
 list = ListView.as_view()
+
+
+class DeleteView(LoginRequiredMixin, UserQuerysetMixin, DeleteMessageMixin, NextMixin, generic.DeleteView):
+    """"Delete an invitation. Only accessible to participants of the
+    invitations's present.
+    
+    """
+    template_name = 'kdo/invitation_delete.html'
+    model = Invitation
+    user_field_name = 'present__participants'
+    pk_url_kwarg = 'token'
+    
+    @property
+    def default_next_url(self):
+        return reverse('kdo-present-detail', args=(self.present.pk,))
+
+delete = DeleteView.as_view()
