@@ -28,8 +28,9 @@ class CreateView(LoginRequiredMixin, NextMixin, FormMessageMixin, generic.Create
         kwargs['present'] = self.present
         return kwargs
     
-    def dispatch(self, *args, **kwargs):
-        self.present = get_object_or_404(Present, pk=kwargs['pk'])
+    def dispatch(self, request, *args, **kwargs):
+        self.present = get_object_or_404(Present, pk=kwargs['pk'],
+                                         participants=request.user)
         return super(CreateView, self).dispatch(*args, **kwargs)
 
 create = CreateView.as_view()

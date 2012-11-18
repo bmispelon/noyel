@@ -34,8 +34,10 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         return reverse('kdo-present-detail', args=[self.present.pk])
     
     def dispatch(self, request, *args, **kwargs):
-        self.present = get_object_or_404(Present, pk=kwargs['pk'])
-        return super(InviteParticipantView, self).dispatch(request, *args, **kwargs)
+        self.present = get_object_or_404(Present, pk=kwargs['pk'],
+                                         participants=request.user)
+        return super(InviteParticipantView, self).dispatch(request, *args,
+                                                           **kwargs)
     
     def get_form_kwargs(self):
         kwargs = super(InviteParticipantView, self).get_form_kwargs()
@@ -46,15 +48,20 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
     def form_valid(self, form):
         user = form.cleaned_data.get('user_object', None)
         if user:
-            msg = _("The user has been added to the present's participants successfully.")
+            msg = _("The user has been added to the present's participants "
+                    "successfully.")
             self.present.participants.add(user)
         else:
-            msg = _("An email has been sent to the user inviting them to participate to this present.")
+            msg = _("An email has been sent to the user inviting them to "
+                    "participate to this present.")
             try:
                 invitation = form.save()
             except IntegrityError: # invitation already sent
-                msg = _("The user \"%(email_address)s\" has already been invited to this present.")
-                self.messages.error(msg % {'email_address': form.cleaned_data['user']})
+                msg = _("The user \"%(email_address)s\" has already been "
+                        "invited to this present.")
+                self.messages.error(msg % {
+                    'email_address': form.cleaned_data['user'],
+                    })
                 return self.form_invalid(form)
             self.send_invitation(invitation)
         
@@ -63,7 +70,10 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
     
     def send_invitation(self, invitation):
         site = get_current_site(self.request)
-        message = InvitationEmail().render({'site': site, 'invitation': invitation})
+        message = InvitationEmail().render({
+            'site': site,
+            'invitation': invitation,
+            })
         
         message.send()
 

@@ -149,10 +149,14 @@ class RemoveParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         return reverse('kdo-present-detail', args=[self.present.pk])
     
     def post(self, request, *args, **kwargs):
-        self.present = get_object_or_404(Present, pk=kwargs['pk'])
-        self.user = get_object_or_404(User, pk=kwargs['user_pk'], present=self.present)
+        self.present = get_object_or_404(Present, pk=kwargs['pk'],
+                                         participants=request.user)
+        self.user = get_object_or_404(User, pk=kwargs['user_pk'],
+                                      present=self.present)
         self.present.participants.remove(self.user)
-        self.messages.success(_("The user has been removed from the present's participants successfully."))
+        msg = _("The user has been removed from the present's participants "
+                "successfully.")
+        self.messages.success(msg)
         
         return self.redirect()
 
