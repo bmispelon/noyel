@@ -40,6 +40,27 @@
                     <i class="icon-off"></i>
                     {% trans 'Sign out' %}
                 </a>
+                {% get_current_language as current_lang %}
+                {% get_available_languages as available_lang %}
+                
+                <form class="form-inline"
+                      action="{% url 'set_language' %}"
+                      method="post"
+                      style="display:inline">
+                    {% for lang, _ in available_lang %}
+                    {% if lang != current_lang %}
+                        <button type="submit"
+                                class="btn"
+                                name="language"
+                                value="{{ lang }}">
+                            <i class="icon-globe"></i>
+                            {{ lang|upper }}
+                        </button>
+                    {% endif %}
+                    {% endfor %}
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    {% csrf_token %}
+                </form>
             </div>
         </div>
     </div>
