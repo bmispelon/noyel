@@ -89,7 +89,8 @@ class PresentInvitationForm(forms.Form):
         cleaned = self.cleaned_data
         
         if not cleaned['friend'] and not cleaned['email']:
-            msg = _("Select a user or provide an email address.")
+            msg = _("Please select a friend in the list or provide an email "
+                    "address.")
             raise forms.ValidationError(msg)
         
         if cleaned['friend']:
