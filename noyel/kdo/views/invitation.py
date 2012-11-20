@@ -46,25 +46,36 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         return kwargs
     
     def form_valid(self, form):
-        user = form.cleaned_data.get('user_object', None)
-        if user:
-            msg = _("The user has been added to the present's participants "
-                    "successfully.")
-            self.present.participants.add(user)
-        else:
-            msg = _("An email has been sent to the user inviting them to "
-                    "participate to this present.")
-            try:
-                invitation = form.save()
-            except IntegrityError: # invitation already sent
-                msg = _("The user \"%(email_address)s\" has already been "
-                        "invited to this present.")
-                self.messages.error(msg % {
-                    'email_address': form.cleaned_data['user'],
-                    })
-                return self.form_invalid(form)
-            self.send_invitation(invitation)
+        """If a user was given, then add it to the participants list right away.
         
+        If an email was given and it corresponds to a friend, then add it too.
+        
+        Otherwise, send an invitation email to the given address.
+        
+        """
+        user, email = form.cleaned_data['friend'], form.cleaned_data['email']
+        if user:
+            msg = _("The user \"%(user)s\" has been added to the present's "
+                    "participants successfully.")
+            self.present.participants.add(user)
+            self.messages.success(msg % {
+                'user': user,
+                })
+            return super(InviteParticipantView, self).form_valid(form)
+
+        try:
+            invitation = form.save_invitation()
+        except IntegrityError: # invitation already sent
+            msg = _("The user \"%(email_address)s\" has already been "
+                    "invited to this present.")
+            self.messages.error(msg % {
+                'email_address': form.cleaned_data['user'],
+                })
+            return self.form_invalid(form)
+        
+        self.send_invitation(invitation)
+        msg = _("An email has been sent to the user inviting them to "
+                "participate to this present.")
         self.messages.success(msg)
         return super(InviteParticipantView, self).form_valid(form)
     

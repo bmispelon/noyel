@@ -61,44 +61,57 @@ class CommentUpdateForm(BaseCommentForm):
     pass
 
 
+class FriendChoiceField(forms.ModelChoiceField):
+    # TODO: docstring
+    def __init__(self, *args, **kwargs):
+        kwargs['queryset'] = User.objects.all()
+        kwargs.setdefault('label', _("Friend"))
+        super(FriendChoiceField, self).__init__(*args, **kwargs)
+    
+    def label_from_instance(self, instance):
+        if instance.first_name:
+            return u"%s (%s)" % (instance.first_name, instance.username)
+        return instance.username
+
+
 class PresentInvitationForm(forms.Form):
-    user = forms.CharField(label=_("user"), help_text=_("Username or email"), required=True)
+    friend = FriendChoiceField(required=False)
+    email = forms.EmailField(label=_("Email"), required=False)
     
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user')
         self.present = kwargs.pop('present')
         super(PresentInvitationForm, self).__init__(*args, **kwargs)
-        self.fields['user'].widget.attrs['placeholder'] = self.fields['user'].help_text
+        friends = get_friends_for_user(self.user).exclude(present=self.present)
+        self.fields['friend'].queryset = friends
     
-    def clean_user(self):
-        query = self.cleaned_data['user']
+    def clean(self):
+        cleaned = self.cleaned_data
+        
+        if not cleaned['friend'] and not cleaned['email']:
+            msg = _("Select a user or provide an email address.")
+            raise forms.ValidationError(msg)
+        
+        if cleaned['friend']:
+            return {'friend': cleaned['friend'], 'email': u''}
+        
+        assert cleaned['email']
         try:
-            validate_email(query)
-        except forms.ValidationError:
+            user = self.fields['friend'].queryset.get(email=cleaned['email'])
+        except User.DoesNotExist:
             pass
         else:
-            return query
+            return {'friend': user, 'email': u''}
         
-        try:
-            user = User.objects.get(username=query)
-            self.cleaned_data['user_object'] = user
-        except User.DoesNotExist:
-            user = None
-        
-        if not user or user not in get_friends_for_user(self.user):
-            self.cleaned_data.pop('user_object', None) # Remove if it exists
-            raise forms.ValidationError(_("User unknown. Try contacting them using their email address."))
-        
-        return query
+        return {'friend': None, 'email': cleaned['email']}
     
-    def save(self):
-        """Create an Invitation object, save it to the database then return it.
-        """
-        assert not self.cleaned_data.get('user_object')
-        email_address = self.cleaned_data['user']
+    def save_invitation(self):
+        email = self.cleaned_data['email']
+        assert email
         return Invitation.objects.create(present=self.present,
                                          sent_by=self.user,
-                                         sent_to=email_address)
+                                         sent_to=email,
+                                         )
 
 
 class RedeemInvitationForm(UserFormMixin, forms.Form):
