@@ -10,4 +10,6 @@ def get_friends_for_user(user, queryset=None):
     # TODO: this should really be a method on the User class.
     if queryset is None:
         queryset = User.objects.all()
-    return queryset.filter(present__participants=user)
+    return queryset.exclude(pk=user.pk)\
+                   .filter(present__participants=user)\
+                   .distinct()
