@@ -17,6 +17,9 @@
       class="{% block form_class %}form-horizontal{% endblock %}">
     {% block form_before_fields %}{% endblock %}
     {% block form_fields %}
+        {% for error in form.non_field_errors %}
+            <p class="text-error">{{ error }}</li>
+        {% endfor %}
         {% include 'snippets/form.html' %}
     {% endblock %}
     {% block form_after_fields %}{% endblock %}
