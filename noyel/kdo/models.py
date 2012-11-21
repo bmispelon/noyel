@@ -82,6 +82,13 @@ class Comment(models.Model):
         ordering = ['-posted_on']
 
 
+class InvitationManager(models.Manager):
+    def for_user(self, user):
+        """Return invitations for the given user."""
+        q = Invitation.Q_for_user(user)
+        return self.get_query_set().filter(q)
+
+
 class Invitation(models.Model):
     TOKEN_SIZE = 16
     token = models.CharField(_("token"), max_length=TOKEN_SIZE, primary_key=True, default=curry(get_random_string, TOKEN_SIZE))
@@ -89,6 +96,8 @@ class Invitation(models.Model):
     sent_by = models.ForeignKey('auth.User', verbose_name=pgettext_lazy("invitation", "sent by"))
     sent_to = models.EmailField(pgettext_lazy("invitation", "sent to"))
     sent_on = models.DateTimeField(pgettext_lazy("invitation", "sent on"), auto_now_add=True)
+    
+    objects = InvitationManager()
     
     def __unicode__(self):
         return self.sent_to
@@ -102,3 +111,9 @@ class Invitation(models.Model):
         self.present.participants.add(user)
         self.delete() # XXX good idea?
         return self.present
+    
+    @classmethod
+    def Q_for_user(cls, user):
+        emails = user.emails.filter(verified=True)\
+                            .values_list('email', flat=True)
+        return models.Q(sent_to__in=emails)

@@ -28,7 +28,7 @@ def invitation_count(user):
     ones).
     
     """
-    return Invitation.objects.filter(sent_to=user.email).count()
+    return Invitation.objects.for_user(user).count()
 
 @register.filter
 def netloc(url):

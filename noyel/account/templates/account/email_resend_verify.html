@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+<p>
+{% blocktrans %}In order to verify that this email address belongs to you,
+we will send you an email containing a link to a unique verification page
+on our website.{% endblocktrans %}
+</p>
+<p>
+{% blocktrans %}When you click this link, your email address will be
+automatically verified and other users will be able to use it to invite you
+to collaborate on presents.{% endblocktrans %}
+</p>
+<form action="" method="post">
+    <button type="submit" class="btn btn-primary">
+        <i class="icon-refresh"></i>
+        {% trans 'Re-send verification link' %}
+    </button>
+    <a href="{{ next }}" class="btn btn-inverse">{% trans 'Cancel' %}</a>
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% endblock %}

@@ -130,7 +130,7 @@ class ListView(LoginRequiredMixin, generic.ListView):
     
     def get_queryset(self):
         base = super(ListView, self).get_queryset()
-        base = base.filter(sent_to=self.request.user.email)
+        base = base.filter(Invitation.Q_for_user(self.request.user))
         return base.select_related('present', 'sent_by').order_by('sent_on')
 
 list = ListView.as_view()

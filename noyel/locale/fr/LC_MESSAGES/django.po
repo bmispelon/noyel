@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-20 18:09+0100\n"
-"PO-Revision-Date: 2012-11-20 18:10+0100\n"
+"POT-Creation-Date: 2012-11-21 21:49+0100\n"
+"PO-Revision-Date: 2012-11-21 21:48+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -25,17 +25,124 @@ msgstr "Français"
 msgid "English"
 msgstr "Anglais"
 
-#: account/forms.py:13
+#: account/emails.py:11
+msgid "[{{ site.domain }}] Email verification"
+msgstr "[{{ site.domain }}] Vérification d'adresse"
+
+#: account/forms.py:15
 msgid "Your username cannot contain a \"@\"."
 msgstr "Votre identifiant ne peut pas contenir le caractère \"@\""
 
-#: account/views.py:64
+#: account/forms.py:24 account/models.py:11 account/models.py:17
+msgid "email address"
+msgstr "adresse électronique"
+
+#: account/forms.py:38
+msgid "This email address is already taken."
+msgstr "Cette adresse électronique est déjà prise."
+
+#: account/models.py:9
+msgid "user"
+msgstr "utilisateur"
+
+#: account/models.py:12
+msgid "verified"
+msgstr "vérifiée"
+
+#: account/models.py:13 kdo/templates/kdo/present_detail.html:50
+msgid "created on"
+msgstr "créé le"
+
+#: account/models.py:14
+msgid "verified on"
+msgstr "vérifiée le"
+
+#: account/models.py:18
+msgid "email addresses"
+msgstr "adresses électroniques"
+
+#: account/views.py:79
 msgid "Your profile has been updated successfully."
 msgstr "Votre profil a été mis à jour avec succès."
 
-#: account/views.py:77
+#: account/views.py:92
 msgid "Your password has been changed successfully."
 msgstr "Votre mot de passe a été mis à jour avec succès."
+
+#: account/views.py:111
+msgid ""
+"Your new email address has been created. You should receive an message soon "
+"with a link to verify the address belongs to you."
+msgstr ""
+"Votre nouvelle adresse électronique a été créée. Vous devriez recevoir sous "
+"peu un message contenant un lien pour vérifier que cette adresse vous "
+"appartient bel et bien."
+
+#: account/views.py:163
+msgid "We've resent the email. Let's hope you get it this time."
+msgstr ""
+"Nous avons renvoyé le message. Espérons que vous le recevrez cette fois-ci."
+
+#: account/views.py:207
+#, python-format
+msgid "%(email)s has been verified successfully."
+msgstr "%(email)s a été vérifié avec succès."
+
+#: account/views.py:212
+msgid "Invalid token."
+msgstr "Jeton incorrect."
+
+#: account/templates/account/email_resend_verify.html:8
+msgid ""
+"In order to verify that this email address belongs to you,\n"
+"we will send you an email containing a link to a unique verification page\n"
+"on our website."
+msgstr ""
+"Afin de vérifier que cette adresse vous appartient bel et bien.\n"
+"Nous allons vous envoyez un message contenant un lien unique de vérification."
+
+#: account/templates/account/email_resend_verify.html:13
+msgid ""
+"When you click this link, your email address will be\n"
+"automatically verified and other users will be able to use it to invite you\n"
+"to collaborate on presents."
+msgstr ""
+"En cliquant ce lien, votre adresse sera automatiquement vérifiée\n"
+"et les autres utilisateurs pourront ensuite vous inviter à collaborer sur "
+"des\n"
+"cadeaux en l'utilisant."
+
+#: account/templates/account/email_resend_verify.html:20
+#: account/templates/account/profile_update.html:31
+msgid "Re-send verification link"
+msgstr "Ré-envoyer le lien de vérification"
+
+#: account/templates/account/email_resend_verify.html:22
+#: templates/baseform.html:42
+msgid "Cancel"
+msgstr "Annuler"
+
+#: account/templates/account/email_verify.html:9
+msgid ""
+"Uh-oh. It looks like the verification link you followed is invalid.\n"
+"This usually means that you've already verified this email address."
+msgstr ""
+"Aïe aïe aïe. On dirait que le lien de vérification fourni est incorrect.\n"
+"En général, cela signifie que vous avez déjà vérifié cette adresse "
+"électronique."
+
+#: account/templates/account/email_verify.html:14
+msgid ""
+"Everything looks good. Click the button under to finish the verification "
+"process."
+msgstr ""
+"Tout a l'air bon. Cliquez sur le bouton ci-dessous pour finaliser le "
+"processus de vérification."
+
+#: account/templates/account/email_verify.html:17
+#, python-format
+msgid "Verify %(email)s"
+msgstr "Vérifier %(email)s"
 
 #: account/templates/account/logged_out.html:5
 #: account/templates/account/logged_out.html:8
@@ -82,6 +189,19 @@ msgstr "Mot de passe"
 #: account/templates/account/profile_update.html:17
 msgid "Change"
 msgstr "Modifier"
+
+#: account/templates/account/profile_update.html:22
+msgid "Email addresses"
+msgstr "Adresses électroniques"
+
+#: account/templates/account/profile_update.html:36
+#: kdo/templates/kdo/present_detail.html:67
+msgid "Remove"
+msgstr "Retirer"
+
+#: account/templates/account/profile_update.html:45
+msgid "Add an email address"
+msgstr "Ajouter une adresse électronique"
 
 #: account/templates/account/signup.html:5
 #: account/templates/account/signup.html:7
@@ -144,11 +264,11 @@ msgstr ""
 "Merci de sélectionner un ami dans la liste ou d'indiquer une adresse "
 "électronique."
 
-#: kdo/forms.py:119 kdo/models.py:87
+#: kdo/forms.py:121 kdo/models.py:94
 msgid "token"
 msgstr "jeton"
 
-#: kdo/forms.py:122
+#: kdo/forms.py:124
 msgid "This token is invalid."
 msgstr "Ce jeton est invalide."
 
@@ -207,7 +327,7 @@ msgstr "ajouté le"
 msgid "updated on"
 msgstr "mis à jour le"
 
-#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:88
+#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:95
 #: kdo/templates/kdo/invitation_list.html:13
 msgid "present"
 msgstr "cadeau"
@@ -236,26 +356,26 @@ msgstr "commentaire"
 msgid "comments"
 msgstr "commentaires"
 
-#: kdo/models.py:89
+#: kdo/models.py:96
 msgctxt "invitation"
 msgid "sent by"
 msgstr "envoyée par"
 
-#: kdo/models.py:90
+#: kdo/models.py:97
 msgctxt "invitation"
 msgid "sent to"
 msgstr "envoyée à"
 
-#: kdo/models.py:91
+#: kdo/models.py:98
 msgctxt "invitation"
 msgid "sent on"
 msgstr "envoyée le"
 
-#: kdo/models.py:97
+#: kdo/models.py:106
 msgid "invitation"
 msgstr "invitation"
 
-#: kdo/models.py:98 kdo/templates/kdo/present_detail.html:91
+#: kdo/models.py:107 kdo/templates/kdo/present_detail.html:91
 msgid "invitations"
 msgstr "invitations"
 
@@ -348,14 +468,6 @@ msgid "%(matching)s other"
 msgid_plural " %(matching)s others"
 msgstr[0] "%(matching)s autre"
 msgstr[1] "%(matching)s autres"
-
-#: kdo/templates/kdo/present_detail.html:50
-msgid "created on"
-msgstr "créé le"
-
-#: kdo/templates/kdo/present_detail.html:67
-msgid "Remove"
-msgstr "Retirer"
 
 #: kdo/templates/kdo/present_detail.html:82
 msgid "Invite a participant"
@@ -510,10 +622,6 @@ msgstr "Non, revenir en arrière"
 msgid "Create"
 msgstr "Créer"
 
-#: templates/baseform.html:42
-msgid "Cancel"
-msgstr "Annuler"
-
 #: templates/navbar_anonymous.html:19
 msgid "Username"
 msgstr "Identifiant"
@@ -544,9 +652,6 @@ msgstr "Erreur de connection"
 #: templates/registration/login.html:12
 msgid "Incorrect username/password. Please try again."
 msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
-
-#~ msgid "user"
-#~ msgstr "utilisateur"
 
 #~ msgid "Username or email"
 #~ msgstr "Identifiant ou adresse électronique"
@@ -589,9 +694,6 @@ msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
 #~ msgstr ""
 #~ "L'administrateur de ce site a reçu un email avec les détails de l'erreur. "
 #~ "Le problème devrait normalement être réglé sous peu."
-
-#~ msgid "valid for"
-#~ msgstr "valide pendant"
 
 #~ msgid "in hours"
 #~ msgstr "heures"

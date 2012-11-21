@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<h1>{{ object.email }}</h1>
+{% if object.make_hash != token %}
+<p><!-- TODO: bootstrap error class -->
+{% blocktrans %}Uh-oh. It looks like the verification link you followed is invalid.
+This usually means that you've already verified this email address.{% endblocktrans %}
+</p>
+{% else %}
+<form class="" method="post">
+    <p>{% trans 'Everything looks good. Click the button under to finish the verification process.' %}</p>
+    <button type="submit" class="btn btn-primary">
+    <i class="icon-envelope"></i>
+    {% blocktrans with email=object.email %}Verify {{ email }}{% endblocktrans %}
+    </button>
+    {% csrf_token %}
+</form>
+{% endif %}
+{% endblock %}

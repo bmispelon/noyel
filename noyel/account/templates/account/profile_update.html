@@ -18,4 +18,36 @@
         </a>
     </div>
 </div>
+<div class="control-group">
+    <label class="control-label">{% trans 'Email addresses' %} :</label>
+    <div class="controls">
+        <ul class="unstyled inline">
+        {% for email in object.emails.all %}
+            <li>
+                <span class="label label-{% if email.verified %}info{% else %}important{% endif %}">
+                    {{ email.email }}
+                    {% if not email.verified %}
+                        <a href="{% url 'kdo-email-resend-verify-message' email.email %}"
+                           title="{% trans 'Re-send verification link' %}">
+                            <i class="icon-refresh"></i>
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'kdo-email-delete' email.email %}"
+                       title="{% trans 'Remove' %}">
+                        <i class="icon-trash"></i>
+                    </a>
+                </span>
+            </li>
+        {% endfor %}
+            <li>
+                <span class="label label-info">
+                    <a href="{% url 'kdo-email-create' %}?next={{ request.get_full_path|urlencode }}"
+                       title="{% trans 'Add an email address' %}">
+                        <i class="icon-plus icon-white"></i>
+                    </a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

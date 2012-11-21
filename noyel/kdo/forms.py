@@ -98,7 +98,9 @@ class PresentInvitationForm(forms.Form):
         
         assert cleaned['email']
         try:
-            user = self.fields['friend'].queryset.get(email=cleaned['email'])
+            base_qs = self.fields['friend'].queryset
+            user = base_qs.get(emails__email=cleaned['email'],
+                               emails__verified=True)
         except User.DoesNotExist:
             pass
         else:

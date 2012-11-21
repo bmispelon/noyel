@@ -1,0 +1,10 @@
+Bonjour {{ user.username }},
+
+Nous vous envoyons ce message afin de vérifier que l'adresse que vous nous avez
+donnée est belle et bien la votre.
+
+Pour procéder à la vérification, ouvrez le lien suivant dans votre navigateur:
+http://{{ site.domain }}{% url 'kdo-email-verify' email.email email.make_hash %}
+
+Nous espérons vous voir bientôt sur notre site,
+L'équipe KDO
