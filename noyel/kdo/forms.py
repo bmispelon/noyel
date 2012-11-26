@@ -19,6 +19,10 @@ class BasePresentForm(forms.ModelForm):
         model = Present
         fields = ['title', 'giftee', 'description', 'link', 'price']
 
+    def __init__(self, *args, **kwargs):
+        super(BasePresentForm, self).__init__(*args, **kwargs)
+        self.fields['price'].localize = True
+
 
 class PresentCreateForm(UserFormMixin, BasePresentForm):
     def save(self): # TODO: support commit=False
