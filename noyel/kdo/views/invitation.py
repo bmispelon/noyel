@@ -2,15 +2,16 @@ from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db import IntegrityError
-from django.contrib.sites.models import get_current_site
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
+from django.utils.timezone import now
+
 from django.views import generic
+from django.views.generic.detail import SingleObjectMixin
 
 from noyel.kdo import forms as kdo_forms
 from noyel.kdo.mixins import LoginRequiredMixin, UserQuerysetMixin
 from noyel.kdo.models import Present, Invitation
-from noyel.kdo.emails import InvitationEmail
 
 from toolbox.messages import MessageMixin, FormMessageMixin, DeleteMessageMixin
 from toolbox.next import NextMixin
@@ -73,22 +74,35 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
                 })
             return self.form_invalid(form)
         
-        self.send_invitation(invitation)
+        invitation.send_email(self.request)
         msg = _("An email has been sent to the user inviting them to "
                 "participate to this present.")
         self.messages.success(msg)
         return super(InviteParticipantView, self).form_valid(form)
-    
-    def send_invitation(self, invitation):
-        site = get_current_site(self.request)
-        message = InvitationEmail().render({
-            'site': site,
-            'invitation': invitation,
-            })
-        
-        message.send()
 
 invite_participant = InviteParticipantView.as_view()
+
+
+class ReSendView(LoginRequiredMixin, UserQuerysetMixin, MessageMixin, SingleObjectMixin, NextMixin, generic.View):
+    """Re-send the invitation email and update its sent_on attribute."""
+    model = Invitation
+    pk_url_kwarg = 'token'
+    user_field_name = 'present__participants'
+    
+    @property
+    def default_next_url(self):
+        return reverse('kdo-present-detail', args=[self.invitation.present_id])
+    
+    def post(self, request, *args, **kwargs):
+        self.invitation = self.get_object()
+        self.invitation.send_email(self.request)
+        self.invitation.sent_on = now()
+        self.invitation.save()
+        msg = _("Invitation re-sent successfully.")
+        self.messages.success(msg)
+        return self.redirect()
+
+re_send = ReSendView.as_view()
 
 
 class RedeemView(LoginRequiredMixin, FormMessageMixin, generic.FormView):

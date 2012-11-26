@@ -6,6 +6,9 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.functional import curry
+from django.contrib.sites.models import get_current_site
+
+from noyel.kdo.emails import InvitationEmail
 
 
 class Present(models.Model):
@@ -117,3 +120,15 @@ class Invitation(models.Model):
         emails = user.emails.filter(verified=True)\
                             .values_list('email', flat=True)
         return models.Q(sent_to__in=emails)
+    
+    def get_message(self, request):
+        """Return a rendered InvitationEmail message with the given request."""
+        site = get_current_site(request)
+        return InvitationEmail().render({
+            'site': site,
+            'invitation': self,
+            })
+    
+    def send_email(self, request):
+        message = self.get_message(request)
+        return message.send()

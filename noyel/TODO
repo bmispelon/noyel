@@ -4,10 +4,10 @@
 * Merge two presents (participants + comments)
 * Next action in create present form (add another one, see details, see list)
 * See about moving to custom User model (unique email, no @ in username, custom methods)
-* Re-send invitation
 * timezone preferences
 * konami code (ponystrap)
 * requirements
 * voting
 * status
 * buyer
+* Present.created_by

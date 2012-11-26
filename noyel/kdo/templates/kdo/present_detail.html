@@ -56,7 +56,7 @@
     {% endif %}
     
     <dt>{% trans 'participants'|capfirst %}</dt>
-    <dd><ul class="unstyled participants inline">
+    <dd><ul class="unstyled inline">
         {% for participant in object.participants.all %}
             <li>
                 <span class="label label-info">
@@ -97,6 +97,15 @@
                         <span title="{% blocktrans with since=invitation.sent_on|timesince %}{{ since }} ago{% endblocktrans %}">
                             {{ invitation.sent_to }}
                         </span>
+                        <form action="{% url 'kdo-invitation-re-send' invitation.token %}"
+                              method="post">
+                            <button class="submit"
+                                    title="{% trans 'Re-send this invitation' %}">
+                                <i class="icon-refresh"></i>
+                            </button>
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            {% csrf_token %}
+                        </form>
                         <a href="{% url 'kdo-invitation-delete' invitation.token %}?next={{ request.get_full_path|urlencode }}"
                            title="{% trans 'delete'|capfirst %}">
                             <i class="icon-trash"></i>

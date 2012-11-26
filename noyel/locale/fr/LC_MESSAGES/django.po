@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-21 21:49+0100\n"
-"PO-Revision-Date: 2012-11-21 21:48+0100\n"
+"POT-Creation-Date: 2012-11-26 20:33+0100\n"
+"PO-Revision-Date: 2012-11-26 20:34+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -250,132 +250,132 @@ msgstr ""
 msgid "[{{ site.domain }}] Invitation to participate"
 msgstr "[{{ site.domain }}] Invitation à participer"
 
-#: kdo/forms.py:68
+#: kdo/forms.py:72
 msgid "Friend"
 msgstr "Ami"
 
-#: kdo/forms.py:79
+#: kdo/forms.py:83
 msgid "Email"
 msgstr "Email"
 
-#: kdo/forms.py:92
+#: kdo/forms.py:96
 msgid "Please select a friend in the list or provide an email address."
 msgstr ""
 "Merci de sélectionner un ami dans la liste ou d'indiquer une adresse "
 "électronique."
 
-#: kdo/forms.py:121 kdo/models.py:94
+#: kdo/forms.py:125 kdo/models.py:97
 msgid "token"
 msgstr "jeton"
 
-#: kdo/forms.py:124
+#: kdo/forms.py:128
 msgid "This token is invalid."
 msgstr "Ce jeton est invalide."
 
-#: kdo/models.py:19
+#: kdo/models.py:22
 msgid "rejected"
 msgstr "rejeté"
 
-#: kdo/models.py:20
+#: kdo/models.py:23
 msgid "suggested"
 msgstr "suggéré"
 
-#: kdo/models.py:21
+#: kdo/models.py:24
 msgid "accepted"
 msgstr "accepté"
 
-#: kdo/models.py:22
+#: kdo/models.py:25
 msgid "bought"
 msgstr "acheté"
 
-#: kdo/models.py:24 kdo/templates/kdo/present_list.html:11
+#: kdo/models.py:27 kdo/templates/kdo/present_list.html:11
 msgid "title"
 msgstr "titre"
 
-#: kdo/models.py:25 kdo/templates/kdo/invitation_list.html:14
+#: kdo/models.py:28 kdo/templates/kdo/invitation_list.html:14
 #: kdo/templates/kdo/present_detail.html:24
 #: kdo/templates/kdo/present_list.html:12
 msgid "giftee"
 msgstr "destinataire"
 
-#: kdo/models.py:26 kdo/templates/kdo/present_detail.html:36
+#: kdo/models.py:29 kdo/templates/kdo/present_detail.html:36
 #: kdo/templates/kdo/present_list.html:13
 msgid "description"
 msgstr "description"
 
-#: kdo/models.py:27 kdo/templates/kdo/present_detail.html:46
+#: kdo/models.py:30 kdo/templates/kdo/present_detail.html:46
 msgid "link"
 msgstr "lien"
 
-#: kdo/models.py:28 kdo/templates/kdo/present_detail.html:41
+#: kdo/models.py:31 kdo/templates/kdo/present_detail.html:41
 msgid "price"
 msgstr "prix"
 
-#: kdo/models.py:30
+#: kdo/models.py:33
 msgid "status"
 msgstr "état"
 
-#: kdo/models.py:34 kdo/templates/kdo/present_detail.html:58
+#: kdo/models.py:37 kdo/templates/kdo/present_detail.html:58
 msgid "participants"
 msgstr "participants"
 
-#: kdo/models.py:36
+#: kdo/models.py:39
 msgid "added on"
 msgstr "ajouté le"
 
-#: kdo/models.py:37 kdo/templates/kdo/present_detail.html:54
+#: kdo/models.py:40 kdo/templates/kdo/present_detail.html:54
 msgid "updated on"
 msgstr "mis à jour le"
 
-#: kdo/models.py:40 kdo/models.py:67 kdo/models.py:95
+#: kdo/models.py:43 kdo/models.py:70 kdo/models.py:98
 #: kdo/templates/kdo/invitation_list.html:13
 msgid "present"
 msgstr "cadeau"
 
-#: kdo/models.py:41
+#: kdo/models.py:44
 msgid "presents"
 msgstr "cadeaux"
 
-#: kdo/models.py:68
+#: kdo/models.py:71
 msgid "author"
 msgstr "auteur"
 
-#: kdo/models.py:69
+#: kdo/models.py:72
 msgid "text"
 msgstr "texte"
 
-#: kdo/models.py:70
+#: kdo/models.py:73
 msgid "posted on"
 msgstr "envoyé le"
 
-#: kdo/models.py:80
+#: kdo/models.py:83
 msgid "comment"
 msgstr "commentaire"
 
-#: kdo/models.py:81 kdo/templates/kdo/present_list.html:14
+#: kdo/models.py:84 kdo/templates/kdo/present_list.html:14
 msgid "comments"
 msgstr "commentaires"
 
-#: kdo/models.py:96
+#: kdo/models.py:99
 msgctxt "invitation"
 msgid "sent by"
 msgstr "envoyée par"
 
-#: kdo/models.py:97
+#: kdo/models.py:100
 msgctxt "invitation"
 msgid "sent to"
 msgstr "envoyée à"
 
-#: kdo/models.py:98
+#: kdo/models.py:101
 msgctxt "invitation"
 msgid "sent on"
 msgstr "envoyée le"
 
-#: kdo/models.py:106
+#: kdo/models.py:109
 msgid "invitation"
 msgstr "invitation"
 
-#: kdo/models.py:107 kdo/templates/kdo/present_detail.html:91
+#: kdo/models.py:110 kdo/templates/kdo/present_detail.html:91
 msgid "invitations"
 msgstr "invitations"
 
@@ -429,7 +429,7 @@ msgstr "Derniers commentaires"
 msgid "for present"
 msgstr "pour le cadeau"
 
-#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:124
+#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:133
 #, python-format
 msgid "on %(date)s at %(time)s"
 msgstr "le %(date)s à %(time)s"
@@ -478,23 +478,27 @@ msgstr "Inviter un participant"
 msgid "%(since)s ago"
 msgstr "il y a %(since)s"
 
-#: kdo/templates/kdo/present_detail.html:101
+#: kdo/templates/kdo/present_detail.html:103
+msgid "Re-send this invitation"
+msgstr "Ré-envoyer cette invitation"
+
+#: kdo/templates/kdo/present_detail.html:110
 msgid "delete"
 msgstr "supprimer"
 
-#: kdo/templates/kdo/present_detail.html:114
+#: kdo/templates/kdo/present_detail.html:123
 msgid "Comments"
 msgstr "Commentaires"
 
-#: kdo/templates/kdo/present_detail.html:130
+#: kdo/templates/kdo/present_detail.html:139
 msgid "Update this comment"
 msgstr "Mettre à jour ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:135
+#: kdo/templates/kdo/present_detail.html:144
 msgid "Delete this comment"
 msgstr "Supprimer ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:149
+#: kdo/templates/kdo/present_detail.html:158
 msgid "Add a comment"
 msgstr "Ajouter un commentaire"
 
@@ -530,7 +534,7 @@ msgstr "Le commentaire a été mis à jour avec succès."
 msgid "The comment has been deleted successfully."
 msgstr "Le commentaire a été supprimé avec succès."
 
-#: kdo/views/invitation.py:58
+#: kdo/views/invitation.py:59
 #, python-format
 msgid ""
 "The user \"%(user)s\" has been added to the present's participants "
@@ -539,20 +543,24 @@ msgstr ""
 "L'utilisateur \"%(user)s\" a été ajouté aux participant du cadeau avec "
 "succès."
 
-#: kdo/views/invitation.py:69
+#: kdo/views/invitation.py:70
 #, python-format
 msgid ""
 "The user \"%(email_address)s\" has already been invited to this present."
 msgstr "L'utilisateur \"%(email_address)s\" a déja été invité pour ce cadeau."
 
-#: kdo/views/invitation.py:77
+#: kdo/views/invitation.py:78
 msgid ""
 "An email has been sent to the user inviting them to participate to this "
 "present."
 msgstr ""
 "Un courriel a été envoyé à l'utilisateur l'invitant à participer à ce cadeau."
 
-#: kdo/views/invitation.py:98
+#: kdo/views/invitation.py:101
+msgid "Invitation re-sent successfully."
+msgstr "L'invitation a été ré-envoyée avec succès."
+
+#: kdo/views/invitation.py:112
 msgid "The invitation has been redeemed successfully."
 msgstr "L'invitation a été validée avec succès."
 
@@ -660,9 +668,6 @@ msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
 #~ msgstr ""
 #~ "Utilisateur inconnu. Essayez de le contacter en utilisant plutôt son "
 #~ "adresse électronique."
-
-#~ msgid "pending invitations"
-#~ msgstr "invitations en attente"
 
 #~ msgid ""
 #~ "Hello,\n"
