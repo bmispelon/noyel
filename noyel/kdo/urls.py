@@ -21,6 +21,7 @@ urlpatterns.extend(patterns('noyel.kdo.views.present',
     url(r'^presents/(?P<pk>\d+)/$', 'detail', name='kdo-present-detail'),
     url(r'^presents/(?P<pk>\d+)/update/$', 'update', name='kdo-present-update'),
     url(r'^presents/(?P<pk>\d+)/delete/$', 'delete', name='kdo-present-delete'),
+    url(r'^presents/(?P<pk>\d+)/purchase/$', 'purchase', name='kdo-present-purchase'),
     
     
     url(r'^presents/for/(?P<giftee>.+)/$', 'list_for_giftee', name='kdo-present-list-for-giftee'),

@@ -140,3 +140,23 @@ class RedeemInvitationForm(UserFormMixin, forms.Form):
     def save(self):
         """Redeem the invitation."""
         return self.cleaned_data['invitation'].redeem(self.user)
+
+
+class PresentPurchaseForm(UserFormMixin, forms.ModelForm):
+    class Meta:
+        model = Present
+        fields = ['price']
+    
+    def clean(self):
+        if self.instance.bought_by:
+            msg = _("This present has already been purchased by %(user)s.")
+            raise forms.ValidationError(msg % self.instance.bought_by.username)
+        return super(PresentPurchaseForm, self).clean()
+    
+    def save(self, commit=True):
+        instance = super(PresentPurchaseForm, self).save(commit=False)
+        instance.bought_by = self.user
+        instance.status = Present.STATUS.BOUGHT
+        if commit:
+            instance.save()
+        return instance

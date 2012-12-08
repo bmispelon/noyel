@@ -18,6 +18,7 @@ class Present(models.Model):
         ACCEPTED = 2
         BOUGHT = 3
         
+        
         choices = [
             (REJECTED, _("rejected")),
             (SUGGESTED, _("suggested")),
@@ -35,6 +36,10 @@ class Present(models.Model):
     
     participants = models.ManyToManyField('auth.User',
                     verbose_name=_("participants"))
+    
+    bought_by = models.ForeignKey('auth.User', verbose_name=_("bought by"),
+                                  blank=True, null=True,
+                                  related_name='purchased_set')
     
     created_on = models.DateTimeField(_("added on"), auto_now_add=True)
     updated_on = models.DateTimeField(_("updated on"), auto_now=True)

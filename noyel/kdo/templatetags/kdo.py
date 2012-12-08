@@ -2,7 +2,7 @@ from urlparse import urlparse
 
 from django import template
 
-from noyel.kdo.forms import CommentCreateForm
+from noyel.kdo.forms import CommentCreateForm, PresentPurchaseForm
 from noyel.kdo.models import Invitation
 
 register = template.Library()
@@ -21,6 +21,14 @@ def comment_form(present, user):
     
     """
     return CommentCreateForm(present=present, user=user)
+
+@register.filter
+def purchase_form(present, user):
+    """Return an instance of a PresentPurchaseForm for the given present and
+    user.
+    
+    """
+    return PresentPurchaseForm(user=user, instance=present)
 
 @register.assignment_tag
 def invitation_count(user):

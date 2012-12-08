@@ -16,9 +16,16 @@
     <tbody>
     {% for present in object_list %}
         <tr>
-            <td><a href="{% url 'kdo-present-detail' present.pk %}">
+            <td>
+                <a href="{% url 'kdo-present-detail' present.pk %}">
                 {{ present.title }}
-            </a></td>
+                </a>
+                {% if present.bought_by %}
+                <span class="bought-by" title="{{ object.bought_by.username }}">
+                <i class="icon-shopping-cart"></i>
+                </span>
+                {% endif %}
+            </td>
             <td>{{ present.giftee }}</td>
             <td>{{ present.description|linebreaks }}</td>
             <td><a href="{% url 'kdo-present-detail' present.pk %}#comments">

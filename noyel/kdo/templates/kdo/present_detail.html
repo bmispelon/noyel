@@ -6,20 +6,38 @@
 
 {% block content %}
 
+
 <div class="btn-group pull-right">
+    {% if not object.bought_by %}
+    <a class="btn btn-success"
+       href="{% url 'kdo-present-purchase' object.pk %}?next={{ request.get_full_path|urlencode }}"
+       title="{% trans 'I bought this present' %}">
+        <i class="icon-hand-up icon-white"></i>
+    </a>
+    {% endif %}
+    {% if not object.bought_by or object.bought_by == user %}
     <a class="btn btn-primary"
        href="{% url 'kdo-present-update' object.pk %}?next={{ request.get_full_path|urlencode }}"
        title="{% trans 'Update' %}">
         <i class="icon-pencil icon-white"></i>
     </a>
+    {% endif %}
+    {% if not object.bought_by %}
     <a class="btn btn-danger"
        href="{% url 'kdo-present-delete' object.pk %}"
        title="{% trans 'Delete' %}">
         <i class="icon-trash icon-white"></i>
     </a>
+    {% endif %}
 </div>
 
-<h1>{{ object.title }}</h1>
+<h1>{{ object.title }}
+{% if object.bought_by %}
+<span class="bought-by" title="{{ object.bought_by.username }}">
+<i class="icon-shopping-cart"></i>
+</span>
+{% endif %}
+</h1>
 <dl class="dl-horizontal">
     <dt>{% trans 'giftee'|capfirst %}</dt>
     <dd>{{ object.giftee }}
@@ -55,13 +73,22 @@
     <dd>{{ object.updated_on|date }}</dd>
     {% endif %}
     
+    {% if object.bought_by %}
+    <dt>{% trans 'bought by'|capfirst %}</dt>
+    <dd>
+        {% if object.bought_by == user %}{% trans 'you'|capfirst %}
+        {% else %}{{ object.bought_by.username }}
+        {% endif %}
+    </dd>
+    {% endif %}
+    
     <dt>{% trans 'participants'|capfirst %}</dt>
     <dd><ul class="unstyled inline">
         {% for participant in object.participants.all %}
             <li>
                 <span class="label label-info">
                 {{ participant.username }}
-                {% if participant.pk != user.pk %}
+                {% if participant != user and participant != object.bought_by %}
                     <form action="{% url 'kdo-present-remove-participant' object.pk participant.pk %}"
                           method="post">
                         <button title="{% trans 'Remove' %}">
@@ -70,6 +97,8 @@
                         <input type="hidden" name="next" value="{{ request.get_full_path }}">
                         {% csrf_token %}
                     </form>
+                {% elif participant == object.bought_by %}
+                    <i class="icon-shopping-cart"></i>
                 {% else %}
                     <i class="icon-heart"></i>
                 {% endif %}

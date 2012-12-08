@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-26 20:33+0100\n"
-"PO-Revision-Date: 2012-11-26 20:34+0100\n"
+"POT-Creation-Date: 2012-12-08 17:19+0100\n"
+"PO-Revision-Date: 2012-12-08 17:18+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -49,7 +49,7 @@ msgstr "utilisateur"
 msgid "verified"
 msgstr "vérifiée"
 
-#: account/models.py:13 kdo/templates/kdo/present_detail.html:50
+#: account/models.py:13 kdo/templates/kdo/present_detail.html:68
 msgid "created on"
 msgstr "créé le"
 
@@ -172,7 +172,7 @@ msgstr "Mise à jour du mot de passe"
 
 #: account/templates/account/password_update.html:7
 #: account/templates/account/profile_update.html:7
-#: kdo/templates/kdo/present_detail.html:12 templates/baseform.html:6
+#: kdo/templates/kdo/present_detail.html:21 templates/baseform.html:6
 #: templates/baseform.html.py:32
 msgid "Update"
 msgstr "Mettre à jour"
@@ -195,7 +195,7 @@ msgid "Email addresses"
 msgstr "Adresses électroniques"
 
 #: account/templates/account/profile_update.html:36
-#: kdo/templates/kdo/present_detail.html:67
+#: kdo/templates/kdo/present_detail.html:94
 msgid "Remove"
 msgstr "Retirer"
 
@@ -264,7 +264,7 @@ msgstr ""
 "Merci de sélectionner un ami dans la liste ou d'indiquer une adresse "
 "électronique."
 
-#: kdo/forms.py:125 kdo/models.py:97
+#: kdo/forms.py:125 kdo/models.py:102
 msgid "token"
 msgstr "jeton"
 
@@ -272,110 +272,119 @@ msgstr "jeton"
 msgid "This token is invalid."
 msgstr "Ce jeton est invalide."
 
-#: kdo/models.py:22
+#: kdo/forms.py:152
+#, python-format
+msgid "This present has already been purchased by %(user)s."
+msgstr "Ce cadeau a déjà été acheté par %(user)s."
+
+#: kdo/models.py:23
 msgid "rejected"
 msgstr "rejeté"
 
-#: kdo/models.py:23
+#: kdo/models.py:24
 msgid "suggested"
 msgstr "suggéré"
 
-#: kdo/models.py:24
+#: kdo/models.py:25
 msgid "accepted"
 msgstr "accepté"
 
-#: kdo/models.py:25
+#: kdo/models.py:26
 msgid "bought"
 msgstr "acheté"
 
-#: kdo/models.py:27 kdo/templates/kdo/present_list.html:11
+#: kdo/models.py:28 kdo/templates/kdo/present_list.html:11
 msgid "title"
 msgstr "titre"
 
-#: kdo/models.py:28 kdo/templates/kdo/invitation_list.html:14
-#: kdo/templates/kdo/present_detail.html:24
+#: kdo/models.py:29 kdo/templates/kdo/invitation_list.html:14
+#: kdo/templates/kdo/present_detail.html:42
 #: kdo/templates/kdo/present_list.html:12
 msgid "giftee"
 msgstr "destinataire"
 
-#: kdo/models.py:29 kdo/templates/kdo/present_detail.html:36
+#: kdo/models.py:30 kdo/templates/kdo/present_detail.html:54
 #: kdo/templates/kdo/present_list.html:13
 msgid "description"
 msgstr "description"
 
-#: kdo/models.py:30 kdo/templates/kdo/present_detail.html:46
+#: kdo/models.py:31 kdo/templates/kdo/present_detail.html:64
 msgid "link"
 msgstr "lien"
 
-#: kdo/models.py:31 kdo/templates/kdo/present_detail.html:41
+#: kdo/models.py:32 kdo/templates/kdo/present_detail.html:59
 msgid "price"
 msgstr "prix"
 
-#: kdo/models.py:33
+#: kdo/models.py:34
 msgid "status"
 msgstr "état"
 
-#: kdo/models.py:37 kdo/templates/kdo/present_detail.html:58
+#: kdo/models.py:38 kdo/templates/kdo/present_detail.html:85
 msgid "participants"
 msgstr "participants"
 
-#: kdo/models.py:39
+#: kdo/models.py:40 kdo/templates/kdo/present_detail.html:77
+msgid "bought by"
+msgstr "acheté par"
+
+#: kdo/models.py:44
 msgid "added on"
 msgstr "ajouté le"
 
-#: kdo/models.py:40 kdo/templates/kdo/present_detail.html:54
+#: kdo/models.py:45 kdo/templates/kdo/present_detail.html:72
 msgid "updated on"
 msgstr "mis à jour le"
 
-#: kdo/models.py:43 kdo/models.py:70 kdo/models.py:98
+#: kdo/models.py:48 kdo/models.py:75 kdo/models.py:103
 #: kdo/templates/kdo/invitation_list.html:13
 msgid "present"
 msgstr "cadeau"
 
-#: kdo/models.py:44
+#: kdo/models.py:49
 msgid "presents"
 msgstr "cadeaux"
 
-#: kdo/models.py:71
+#: kdo/models.py:76
 msgid "author"
 msgstr "auteur"
 
-#: kdo/models.py:72
+#: kdo/models.py:77
 msgid "text"
 msgstr "texte"
 
-#: kdo/models.py:73
+#: kdo/models.py:78
 msgid "posted on"
 msgstr "envoyé le"
 
-#: kdo/models.py:83
+#: kdo/models.py:88
 msgid "comment"
 msgstr "commentaire"
 
-#: kdo/models.py:84 kdo/templates/kdo/present_list.html:14
+#: kdo/models.py:89 kdo/templates/kdo/present_list.html:14
 msgid "comments"
 msgstr "commentaires"
 
-#: kdo/models.py:99
+#: kdo/models.py:104
 msgctxt "invitation"
 msgid "sent by"
 msgstr "envoyée par"
 
-#: kdo/models.py:100
+#: kdo/models.py:105
 msgctxt "invitation"
 msgid "sent to"
 msgstr "envoyée à"
 
-#: kdo/models.py:101
+#: kdo/models.py:106
 msgctxt "invitation"
 msgid "sent on"
 msgstr "envoyée le"
 
-#: kdo/models.py:109
+#: kdo/models.py:114
 msgid "invitation"
 msgstr "invitation"
 
-#: kdo/models.py:110 kdo/templates/kdo/present_detail.html:91
+#: kdo/models.py:115 kdo/templates/kdo/present_detail.html:120
 msgid "invitations"
 msgstr "invitations"
 
@@ -429,7 +438,7 @@ msgstr "Derniers commentaires"
 msgid "for present"
 msgstr "pour le cadeau"
 
-#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:133
+#: kdo/templates/kdo/landing.html:35 kdo/templates/kdo/present_detail.html:162
 #, python-format
 msgid "on %(date)s at %(time)s"
 msgstr "le %(date)s à %(time)s"
@@ -453,52 +462,61 @@ msgstr ""
 
 #: kdo/templates/kdo/present_create.html:5
 #: kdo/templates/kdo/present_create.html:7
-#: kdo/templates/kdo/present_list.html:37
+#: kdo/templates/kdo/present_list.html:44
 #: templates/navbar_authenticated.html:20
 msgid "Add a present"
 msgstr "Ajouter un cadeau"
 
-#: kdo/templates/kdo/present_detail.html:17 templates/basedelete.html:5
+#: kdo/templates/kdo/present_detail.html:14
+#: kdo/templates/kdo/present_purchase.html:13
+msgid "I bought this present"
+msgstr "J'ai acheté ce cadeau"
+
+#: kdo/templates/kdo/present_detail.html:28 templates/basedelete.html:5
 msgid "Delete"
 msgstr "Supprimer"
 
-#: kdo/templates/kdo/present_detail.html:29
+#: kdo/templates/kdo/present_detail.html:47
 #, python-format
 msgid "%(matching)s other"
 msgid_plural " %(matching)s others"
 msgstr[0] "%(matching)s autre"
 msgstr[1] "%(matching)s autres"
 
-#: kdo/templates/kdo/present_detail.html:82
+#: kdo/templates/kdo/present_detail.html:79
+msgid "you"
+msgstr "vous"
+
+#: kdo/templates/kdo/present_detail.html:111
 msgid "Invite a participant"
 msgstr "Inviter un participant"
 
-#: kdo/templates/kdo/present_detail.html:97
+#: kdo/templates/kdo/present_detail.html:126
 #, python-format
 msgid "%(since)s ago"
 msgstr "il y a %(since)s"
 
-#: kdo/templates/kdo/present_detail.html:103
+#: kdo/templates/kdo/present_detail.html:132
 msgid "Re-send this invitation"
 msgstr "Ré-envoyer cette invitation"
 
-#: kdo/templates/kdo/present_detail.html:110
+#: kdo/templates/kdo/present_detail.html:139
 msgid "delete"
 msgstr "supprimer"
 
-#: kdo/templates/kdo/present_detail.html:123
+#: kdo/templates/kdo/present_detail.html:152
 msgid "Comments"
 msgstr "Commentaires"
 
-#: kdo/templates/kdo/present_detail.html:139
+#: kdo/templates/kdo/present_detail.html:168
 msgid "Update this comment"
 msgstr "Mettre à jour ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:144
+#: kdo/templates/kdo/present_detail.html:173
 msgid "Delete this comment"
 msgstr "Supprimer ce commentaire"
 
-#: kdo/templates/kdo/present_detail.html:158
+#: kdo/templates/kdo/present_detail.html:187
 msgid "Add a comment"
 msgstr "Ajouter un commentaire"
 
@@ -512,6 +530,18 @@ msgstr "Liste des cadeaux"
 #, python-format
 msgid "Gifts for %(giftee)s"
 msgstr "Cadeaux pour %(giftee)s"
+
+#: kdo/templates/kdo/present_purchase.html:8
+msgid "Please indicate the exact price you paid for this item."
+msgstr "Merci d'indiquer le prix d'achat exact."
+
+#: kdo/templates/kdo/present_purchase.html:9
+msgid "We'll use it later to calculate who owes how much to whom."
+msgstr "Nous l'utiliserons plus tard pour calculer qui doit combien à qui."
+
+#: kdo/templates/kdo/present_purchase.html:17
+msgid "I made a mistake, take me back"
+msgstr "Je m'ai trompé, ramène-moi en arrière"
 
 #: kdo/templates/kdo/present_update.html:6
 #, python-format
@@ -579,6 +609,10 @@ msgstr "Le cadeau a été supprimé avec succès."
 #: kdo/views/present.py:157
 msgid "The user has been removed from the present's participants successfully."
 msgstr "L'utilisateur a été retiré des participants au cadeau avec succès."
+
+#: kdo/views/present.py:173
+msgid "You have been marked as the buyer of this present successfully."
+msgstr "Vous avez été marqué comme acheteur de ce cadeau avec succès."
 
 #: templates/404.html:5
 msgid "Page not found"
@@ -660,6 +694,10 @@ msgstr "Erreur de connection"
 #: templates/registration/login.html:12
 msgid "Incorrect username/password. Please try again."
 msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
+
+#, fuzzy
+#~ msgid "I bought this"
+#~ msgstr "acheté"
 
 #~ msgid "Username or email"
 #~ msgstr "Identifiant ou adresse électronique"

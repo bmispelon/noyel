@@ -161,3 +161,25 @@ class RemoveParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         return self.redirect()
 
 remove_participant = RemoveParticipantView.as_view()
+
+
+class PurchaseView(LoginRequiredMixin, UserQuerysetMixin, NextMixin, MessageMixin, generic.UpdateView):
+    """Mark the current user as having purchased the given present."""
+    template_name = 'kdo/present_purchase.html'
+    model = Present
+    form_class = kdo_forms.PresentPurchaseForm
+    user_field_name = 'participants'
+    default_next_url = reverse_lazy('kdo-present-list')
+    form_valid_message = _("You have been marked as the buyer of this present "
+                           "successfully.")
+    
+    @property
+    def default_next_url(self):
+        return reverse('kdo-present-detail', args=[self.object.pk])
+    
+    def get_form_kwargs(self):
+        kwargs = super(PurchaseView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+purchase = PurchaseView.as_view()
