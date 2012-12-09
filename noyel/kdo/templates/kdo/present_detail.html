@@ -12,7 +12,7 @@
     <a class="btn btn-success"
        href="{% url 'kdo-present-purchase' object.pk %}?next={{ request.get_full_path|urlencode }}"
        title="{% trans 'I bought this present' %}">
-        <i class="icon-hand-up icon-white"></i>
+        <i class="icon-shopping-cart icon-white"></i>
     </a>
     {% endif %}
     {% if not object.bought_by or object.bought_by == user %}
