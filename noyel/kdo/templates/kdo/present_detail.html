@@ -87,9 +87,9 @@
         {% for participant in object.participants.all %}
             <li>
                 <span class="label label-info">
-                {{ participant.username }}
-                {% if participant != user and participant != object.bought_by %}
-                    <form action="{% url 'kdo-present-remove-participant' object.pk participant.pk %}"
+                {{ participant.user.username }}
+                {% if participant.user != user and participant.user != object.bought_by %}
+                    <form action="{% url 'kdo-present-remove-participant' object.pk participant.user.pk %}"
                           method="post">
                         <button title="{% trans 'Remove' %}">
                             <i class="icon-trash"></i>
@@ -97,7 +97,7 @@
                         <input type="hidden" name="next" value="{{ request.get_full_path }}">
                         {% csrf_token %}
                     </form>
-                {% elif participant == object.bought_by %}
+                {% elif participant.user == object.bought_by %}
                     <i class="icon-shopping-cart"></i>
                 {% else %}
                     <i class="icon-heart"></i>

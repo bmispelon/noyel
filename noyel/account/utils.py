@@ -11,5 +11,5 @@ def get_friends_for_user(user, queryset=None):
     if queryset is None:
         queryset = User.objects.all()
     return queryset.exclude(pk=user.pk)\
-                   .filter(present__participants=user)\
+                   .filter(participant__present__participants=user)\
                    .distinct()

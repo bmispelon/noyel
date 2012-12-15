@@ -58,7 +58,7 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         if user:
             msg = _("The user \"%(user)s\" has been added to the present's "
                     "participants successfully.")
-            self.present.participants.add(user)
+            present.participants.create(user=user, present=self.present)
             self.messages.success(msg % {
                 'user': user,
                 })

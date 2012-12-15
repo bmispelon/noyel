@@ -153,7 +153,7 @@ class RemoveParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
                                          participants=request.user)
         self.user = get_object_or_404(User, pk=kwargs['user_pk'],
                                       present=self.present)
-        self.present.participants.remove(self.user)
+        self.present.participants.filter(user=self.user).delete()
         msg = _("The user has been removed from the present's participants "
                 "successfully.")
         self.messages.success(msg)

@@ -33,10 +33,6 @@ class Present(models.Model):
                 blank=True, null=True)
     status = models.PositiveIntegerField(_("status"), choices=STATUS.choices,
                 default=STATUS.SUGGESTED)
-    
-    participants = models.ManyToManyField('auth.User',
-                    verbose_name=_("participants"))
-    
     bought_by = models.ForeignKey('auth.User', verbose_name=_("bought by"),
                                   blank=True, null=True,
                                   related_name='purchased_set')
@@ -116,7 +112,7 @@ class Invitation(models.Model):
         unique_together = ('present', 'sent_to')
     
     def redeem(self, user):
-        self.present.participants.add(user)
+        present.participants.create(user=user, present=self.present)
         self.delete() # XXX good idea?
         return self.present
     
@@ -137,3 +133,13 @@ class Invitation(models.Model):
     def send_email(self, request):
         message = self.get_message(request)
         return message.send()
+
+
+class Participant(models.Model):
+    present = models.ForeignKey(Present, related_name='participants')
+    user = models.ForeignKey('auth.User')
+    
+    class Meta:
+        verbose_name = _("participant")
+        verbose_name_plural = _("participants")
+        unique_together = ('present', 'user')

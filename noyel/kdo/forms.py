@@ -27,7 +27,7 @@ class BasePresentForm(forms.ModelForm):
 class PresentCreateForm(UserFormMixin, BasePresentForm):
     def save(self): # TODO: support commit=False
         present = super(PresentCreateForm, self).save()
-        present.participants.add(self.user)
+        present.participants.create(user=self.user, present=present)
         return present
 
 
@@ -86,7 +86,8 @@ class PresentInvitationForm(forms.Form):
         self.user = kwargs.pop('user')
         self.present = kwargs.pop('present')
         super(PresentInvitationForm, self).__init__(*args, **kwargs)
-        friends = get_friends_for_user(self.user).exclude(present=self.present)
+        friends = get_friends_for_user(self.user)\
+                      .exclude(participant__present=self.present)
         self.fields['friend'].queryset = friends
     
     def clean(self):
