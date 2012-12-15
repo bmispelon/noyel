@@ -87,7 +87,7 @@ class ReSendView(LoginRequiredMixin, UserQuerysetMixin, MessageMixin, SingleObje
     """Re-send the invitation email and update its sent_on attribute."""
     model = Invitation
     pk_url_kwarg = 'token'
-    user_field_name = 'present__participants'
+    user_field_name = 'present__participants__user'
     
     @property
     def default_next_url(self):
@@ -157,7 +157,7 @@ class DeleteView(LoginRequiredMixin, UserQuerysetMixin, DeleteMessageMixin, Next
     """
     template_name = 'kdo/invitation_delete.html'
     model = Invitation
-    user_field_name = 'present__participants'
+    user_field_name = 'present__participants__user'
     pk_url_kwarg = 'token'
     
     @property

@@ -16,7 +16,7 @@ from toolbox.next import NextMixin
 class ListView(LoginRequiredMixin, UserQuerysetMixin, generic.ListView):
     """List all presents the current user has access to."""
     model = Present
-    user_field_name = 'participants'
+    user_field_name = 'participants__user'
     
     def get_queryset(self):
         base = super(ListView, self).get_queryset()
@@ -69,7 +69,7 @@ class DetailView(LoginRequiredMixin, UserQuerysetMixin, generic.DetailView):
     """
     template_name = 'kdo/present_detail.html'
     model = Present
-    user_field_name = 'participants'
+    user_field_name = 'participants__user'
 
 detail = DetailView.as_view()
 
@@ -115,7 +115,7 @@ class UpdateView(LoginRequiredMixin, UserQuerysetMixin, NextMixin, FormMessageMi
     template_name = 'kdo/present_update.html'
     model = Present
     form_class = kdo_forms.PresentUpdateForm
-    user_field_name = 'participants'
+    user_field_name = 'participants__user'
     
     form_valid_message = _("The present has been updated successfully.")
     @property
@@ -131,7 +131,7 @@ class DeleteView(LoginRequiredMixin, UserQuerysetMixin, NextMixin, DeleteMessage
     
     """
     model = Present
-    user_field_name = 'participants'
+    user_field_name = 'participants__user'
     default_next_url = reverse_lazy('kdo-present-list')
     delete_message = _("The present has been deleted successfully.")
 
@@ -168,7 +168,7 @@ class PurchaseView(LoginRequiredMixin, UserQuerysetMixin, NextMixin, MessageMixi
     template_name = 'kdo/present_purchase.html'
     model = Present
     form_class = kdo_forms.PresentPurchaseForm
-    user_field_name = 'participants'
+    user_field_name = 'participants__user'
     default_next_url = reverse_lazy('kdo-present-list')
     form_valid_message = _("You have been marked as the buyer of this present "
                            "successfully.")
