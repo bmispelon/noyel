@@ -16,8 +16,12 @@ class LandingView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(LandingView, self).get_context_data(**kwargs)
         context.update({
-            'latest_presents': Present.objects.filter(participants=self.request.user).order_by('-created_on')[:10],
-            'latest_comments': Comment.objects.filter(present__participants=self.request.user).order_by('-posted_on')[:10],
+            'latest_presents': Present.objects.filter(
+                                   participants__user=self.request.user
+                               ).order_by('-created_on')[:10],
+            'latest_comments': Comment.objects.filter(
+                                   present__participants__user=self.request.user
+                               ).order_by('-posted_on')[:10],
         })
         return context
 
@@ -29,7 +33,8 @@ class GifteeSearchView(LoginRequiredMixin, generic.View): # TODO: json mixin?
     
     def get(self, request):
         search = request.GET.get('q')
-        qs = Present.objects.filter(participants=request.user, giftee__startswith=search)
+        qs = Present.objects.filter(participants__user=request.user,
+                                    giftee__startswith=search)
         qs = qs.values('giftee').annotate(count=Count('pk'))
         l = sorted(qs, key=lambda row: row['count'], reverse=True)
         l = [row['giftee'] for row in l]

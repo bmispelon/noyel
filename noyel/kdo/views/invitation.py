@@ -36,7 +36,7 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
     
     def dispatch(self, request, *args, **kwargs):
         self.present = get_object_or_404(Present, pk=kwargs['pk'],
-                                         participants=request.user)
+                                         participants__user=request.user)
         return super(InviteParticipantView, self).dispatch(request, *args,
                                                            **kwargs)
     
@@ -58,7 +58,7 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         if user:
             msg = _("The user \"%(user)s\" has been added to the present's "
                     "participants successfully.")
-            present.participants.create(user=user, present=self.present)
+            self.present.participants.create(user=user, present=self.present)
             self.messages.success(msg % {
                 'user': user,
                 })

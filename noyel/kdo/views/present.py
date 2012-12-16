@@ -150,7 +150,7 @@ class RemoveParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
     
     def post(self, request, *args, **kwargs):
         self.present = get_object_or_404(Present, pk=kwargs['pk'],
-                                         participants=request.user)
+                                         participants__user=request.user)
         self.user = get_object_or_404(User, pk=kwargs['user_pk'],
                                       present=self.present)
         self.present.participants.filter(user=self.user).delete()
