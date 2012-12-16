@@ -15,11 +15,12 @@
 <form action="{% block form_action %}{% endblock %}"
       method="{% block form_method %}post{% endblock %}"
       class="{% block form_class %}form-horizontal{% endblock %}">
-    {% block form_before_fields %}{% endblock %}
-    {% block form_fields %}
+    {% block form_before_fields %}
         {% for error in form.non_field_errors %}
             <p class="text-error">{{ error }}</li>
         {% endfor %}
+    {% endblock %}
+    {% block form_fields %}
         {% include 'snippets/form.html' %}
     {% endblock %}
     {% block form_after_fields %}{% endblock %}

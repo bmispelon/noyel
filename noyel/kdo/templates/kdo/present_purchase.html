@@ -5,6 +5,7 @@
 {% block form_title %}{{ object.title }}{% endblock %}
 
 {% block form_before_fields %}
+{{ block.super }}
 <p>{% trans "Please indicate the exact price you paid for this item." %}</p>
 <p>{% trans "We'll use it later to calculate who owes how much to whom." %}</p>
 {% endblock %}
