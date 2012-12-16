@@ -9,3 +9,10 @@
 {% block form_submit_text %}{% trans 'Invite' %}{% endblock %}
 
 {% block form_submit_icon %}envelope{% endblock %}
+
+{% block form_fields %}
+{% if form.friends.field.queryset %}
+    {% include 'snippets/field.html' with field=form.friends %}
+{% endif %}
+    {% include 'snippets/field.html' with field=form.email %}
+{% endblock %}
