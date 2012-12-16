@@ -26,7 +26,11 @@
                 </span>
                 {% endif %}
             </td>
-            <td>{{ present.giftee }}</td>
+            <td>
+                <a href="{% url 'kdo-present-list-for-giftee' present.giftee %}">
+                {{ present.giftee }}
+                </a>
+            </td>
             <td>{{ present.description|linebreaks }}</td>
             <td><a href="{% url 'kdo-present-detail' present.pk %}#comments">
                 {{ present.count_comments }}

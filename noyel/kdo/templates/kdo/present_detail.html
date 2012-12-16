@@ -40,13 +40,18 @@
 </h1>
 <dl class="dl-horizontal">
     <dt>{% trans 'giftee'|capfirst %}</dt>
-    <dd>{{ object.giftee }}
+    <dd>
     {% with matching=present|count_matching_giftee:user %}
-    {% if matching %}
-        (<a href="{% url 'kdo-present-list-similar' object.pk %}">
-        {% blocktrans count matching=matching %}{{ matching }} other{% plural %} {{ matching }} others{% endblocktrans %}
-        </a>)
-    {% endif %}
+        {% if matching %}
+            <a href="{% url 'kdo-present-list-for-giftee' object.giftee %}"
+               title="{% blocktrans count matching=matching %}{{ matching }} other{% plural %} {{ matching }} others{% endblocktrans %}">
+        {% endif %}
+        
+        {{ object.giftee }}
+        
+        {% if matching %}
+        </a>
+        {% endif %}
     {% endwith %}
     </dd>
     

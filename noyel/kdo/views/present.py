@@ -45,23 +45,6 @@ class ListForGifteeView(ListView):
 list_for_giftee = ListForGifteeView.as_view()
 
 
-class ListSimilarView(ListView):
-    """List present similar to the given one.
-    For now, similarity means having the same giftee.
-    
-    """
-    # TODO: custom template
-    def get_queryset(self):
-        base = super(ListSimilarView, self).get_queryset()
-        return base.exclude(pk=self.present.pk).filter(giftee__iexact=self.present.giftee)
-    
-    def get(self, request, *args, **kwargs):
-        self.present = get_object_or_404(Present, pk=kwargs['pk'])
-        return super(ListSimilarView, self).get(request, *args, **kwargs)
-
-list_similar = ListSimilarView.as_view()
-
-
 class DetailView(LoginRequiredMixin, UserQuerysetMixin, generic.DetailView):
     """Show detail for a given present. Only accessible to users in the
     `participants` field.
