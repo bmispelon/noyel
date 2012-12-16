@@ -65,12 +65,12 @@ class CommentUpdateForm(BaseCommentForm):
     pass
 
 
-class FriendChoiceField(forms.ModelChoiceField):
+class FriendsChoiceField(forms.ModelMultipleChoiceField):
     # TODO: docstring
     def __init__(self, *args, **kwargs):
         kwargs['queryset'] = User.objects.all()
         kwargs.setdefault('label', _("Friend"))
-        super(FriendChoiceField, self).__init__(*args, **kwargs)
+        super(FriendsChoiceField, self).__init__(*args, **kwargs)
     
     def label_from_instance(self, instance):
         if instance.first_name:
@@ -79,7 +79,7 @@ class FriendChoiceField(forms.ModelChoiceField):
 
 
 class PresentInvitationForm(forms.Form):
-    friend = FriendChoiceField(required=False)
+    friends = FriendsChoiceField(required=False)
     email = forms.EmailField(label=_("Email"), required=False)
     
     def __init__(self, *args, **kwargs):
@@ -88,30 +88,30 @@ class PresentInvitationForm(forms.Form):
         super(PresentInvitationForm, self).__init__(*args, **kwargs)
         friends = get_friends_for_user(self.user)\
                       .exclude(participant__present=self.present)
-        self.fields['friend'].queryset = friends
+        self.fields['friends'].queryset = friends
     
     def clean(self):
         cleaned = self.cleaned_data
         
-        if not cleaned['friend'] and not cleaned['email']:
+        if not cleaned['friends'] and not cleaned['email']:
             msg = _("Please select a friend in the list or provide an email "
                     "address.")
             raise forms.ValidationError(msg)
         
-        if cleaned['friend']:
-            return {'friend': cleaned['friend'], 'email': u''}
+        if cleaned['friends']:
+            return {'friends': cleaned['friends'], 'email': u''}
         
         assert cleaned['email']
         try:
-            base_qs = self.fields['friend'].queryset
+            base_qs = self.fields['friends'].queryset
             user = base_qs.get(emails__email=cleaned['email'],
                                emails__verified=True)
         except User.DoesNotExist:
             pass
         else:
-            return {'friend': user, 'email': u''}
+            return {'friends': [user], 'email': u''}
         
-        return {'friend': None, 'email': cleaned['email']}
+        return {'friends': None, 'email': cleaned['email']}
     
     def save_invitation(self):
         email = self.cleaned_data['email']

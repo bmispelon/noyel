@@ -54,14 +54,17 @@ class InviteParticipantView(LoginRequiredMixin, NextMixin, MessageMixin, generic
         Otherwise, send an invitation email to the given address.
         
         """
-        user, email = form.cleaned_data['friend'], form.cleaned_data['email']
-        if user:
-            msg = _("The user \"%(user)s\" has been added to the present's "
-                    "participants successfully.")
-            self.present.participants.create(user=user, present=self.present)
-            self.messages.success(msg % {
-                'user': user,
-                })
+        users, email = form.cleaned_data['friends'], form.cleaned_data['email']
+        if users:
+            for user in users:
+                try:
+                    self.present.participants.create(user=user,
+                                                     present=self.present)
+                except IntegrityError: # already participating
+                    pass
+            msg = _("The users have been added to the present's participants "
+                    "successfully.")
+            self.messages.success(msg)
             return super(InviteParticipantView, self).form_valid(form)
 
         try:
