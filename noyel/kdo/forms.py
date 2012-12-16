@@ -69,7 +69,7 @@ class FriendsChoiceField(forms.ModelMultipleChoiceField):
     # TODO: docstring
     def __init__(self, *args, **kwargs):
         kwargs['queryset'] = User.objects.all()
-        kwargs.setdefault('label', _("Friend"))
+        kwargs.setdefault('label', _("Friends"))
         super(FriendsChoiceField, self).__init__(*args, **kwargs)
     
     def label_from_instance(self, instance):

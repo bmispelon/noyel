@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-16 18:53+0100\n"
-"PO-Revision-Date: 2012-12-16 18:54+0100\n"
+"POT-Creation-Date: 2012-12-16 19:06+0100\n"
+"PO-Revision-Date: 2012-12-16 19:06+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -118,7 +118,7 @@ msgid "Re-send verification link"
 msgstr "Ré-envoyer le lien de vérification"
 
 #: account/templates/account/email_resend_verify.html:22
-#: templates/baseform.html:42
+#: templates/baseform.html:43
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -173,7 +173,7 @@ msgstr "Mise à jour du mot de passe"
 #: account/templates/account/password_update.html:7
 #: account/templates/account/profile_update.html:7
 #: kdo/templates/kdo/present_detail.html:21 templates/baseform.html:6
-#: templates/baseform.html.py:32
+#: templates/baseform.html.py:33
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -251,8 +251,8 @@ msgid "[{{ site.domain }}] Invitation to participate"
 msgstr "[{{ site.domain }}] Invitation à participer"
 
 #: kdo/forms.py:72
-msgid "Friend"
-msgstr "Ami"
+msgid "Friends"
+msgstr "Amis"
 
 #: kdo/forms.py:83
 msgid "Email"
@@ -472,7 +472,7 @@ msgid "Add a present"
 msgstr "Ajouter un cadeau"
 
 #: kdo/templates/kdo/present_detail.html:14
-#: kdo/templates/kdo/present_purchase.html:13
+#: kdo/templates/kdo/present_purchase.html:14
 msgid "I bought this present"
 msgstr "J'ai acheté ce cadeau"
 
@@ -535,15 +535,15 @@ msgstr "Liste des cadeaux"
 msgid "Gifts for %(giftee)s"
 msgstr "Cadeaux pour %(giftee)s"
 
-#: kdo/templates/kdo/present_purchase.html:8
+#: kdo/templates/kdo/present_purchase.html:9
 msgid "Please indicate the exact price you paid for this item."
 msgstr "Merci d'indiquer le prix d'achat exact."
 
-#: kdo/templates/kdo/present_purchase.html:9
+#: kdo/templates/kdo/present_purchase.html:10
 msgid "We'll use it later to calculate who owes how much to whom."
 msgstr "Nous l'utiliserons plus tard pour calculer qui doit combien à qui."
 
-#: kdo/templates/kdo/present_purchase.html:17
+#: kdo/templates/kdo/present_purchase.html:18
 msgid "I made a mistake, take me back"
 msgstr "Je m'ai trompé, ramène-moi en arrière"
 
@@ -660,7 +660,7 @@ msgstr "Oui, supprimer"
 msgid "No, go back"
 msgstr "Non, revenir en arrière"
 
-#: templates/baseform.html:7 templates/baseform.html.py:33
+#: templates/baseform.html:7 templates/baseform.html.py:34
 msgid "Create"
 msgstr "Créer"
 
