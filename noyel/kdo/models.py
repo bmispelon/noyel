@@ -55,7 +55,7 @@ class Present(models.Model):
         """
         qs = self.__class__.objects.filter(giftee__iexact=self.giftee).exclude(pk=self.pk)
         if user is not None:
-            qs = qs.filter(participants=user)
+            qs = qs.filter(participants__user=user)
         return qs
     
     def get_new_friends_for_user(self, user):
@@ -64,7 +64,7 @@ class Present(models.Model):
         
         """
         return User.objects.exclude(present=self)\
-                           .filter(present__participants=user)
+                           .filter(present__participants__user=user)
 
 
 class Comment(models.Model):
