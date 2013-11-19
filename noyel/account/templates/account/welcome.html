@@ -16,4 +16,10 @@ If you don't have an account, head to the <a href="{{ signup_url }}">signup page
 and register for free.
 {% endblocktrans %}
 </p>
+<p>
+{% url 'password-reset' as reset_url %}
+{% blocktrans %}If you've forgotten your username or password, head over to the
+<a href="{{ reset_url }}">password reset form</a>.
+{% endblocktrans %}
+</p>
 {% endblock %}

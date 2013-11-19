@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: noyel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-16 19:06+0100\n"
+"POT-Creation-Date: 2013-11-19 01:16+0100\n"
 "PO-Revision-Date: 2012-12-16 19:06+0100\n"
 "Last-Translator: Baptiste Mispelon <bmispelon@gmail.com>\n"
 "Language-Team: \n"
@@ -29,15 +29,15 @@ msgstr "Anglais"
 msgid "[{{ site.domain }}] Email verification"
 msgstr "[{{ site.domain }}] Vérification d'adresse"
 
-#: account/forms.py:15
+#: account/forms.py:24
 msgid "Your username cannot contain a \"@\"."
 msgstr "Votre identifiant ne peut pas contenir le caractère \"@\""
 
-#: account/forms.py:24 account/models.py:11 account/models.py:17
+#: account/forms.py:33 account/models.py:11 account/models.py:17
 msgid "email address"
 msgstr "adresse électronique"
 
-#: account/forms.py:38
+#: account/forms.py:47
 msgid "This email address is already taken."
 msgstr "Cette adresse électronique est déjà prise."
 
@@ -61,15 +61,15 @@ msgstr "vérifiée le"
 msgid "email addresses"
 msgstr "adresses électroniques"
 
-#: account/views.py:79
+#: account/views.py:81
 msgid "Your profile has been updated successfully."
 msgstr "Votre profil a été mis à jour avec succès."
 
-#: account/views.py:92
+#: account/views.py:94
 msgid "Your password has been changed successfully."
 msgstr "Votre mot de passe a été mis à jour avec succès."
 
-#: account/views.py:111
+#: account/views.py:113
 msgid ""
 "Your new email address has been created. You should receive an message soon "
 "with a link to verify the address belongs to you."
@@ -78,17 +78,17 @@ msgstr ""
 "peu un message contenant un lien pour vérifier que cette adresse vous "
 "appartient bel et bien."
 
-#: account/views.py:163
+#: account/views.py:165
 msgid "We've resent the email. Let's hope you get it this time."
 msgstr ""
 "Nous avons renvoyé le message. Espérons que vous le recevrez cette fois-ci."
 
-#: account/views.py:207
+#: account/views.py:209
 #, python-format
 msgid "%(email)s has been verified successfully."
 msgstr "%(email)s a été vérifié avec succès."
 
-#: account/views.py:212
+#: account/views.py:214
 msgid "Invalid token."
 msgstr "Jeton incorrect."
 
@@ -246,6 +246,13 @@ msgstr ""
 "\"%(signup_url)s\">page d'inscription</a>\n"
 "et créez-en un gratuitement.\n"
 
+#: account/templates/account/welcome.html:21
+#, python-format
+msgid ""
+"If you've forgotten your username or password, head over to the\n"
+"<a href=\"%(reset_url)s\">password reset form</a>.\n"
+msgstr ""
+
 #: kdo/emails.py:14
 msgid "[{{ site.domain }}] Invitation to participate"
 msgstr "[{{ site.domain }}] Invitation à participer"
@@ -264,7 +271,7 @@ msgstr ""
 "Merci de sélectionner un ami dans la liste ou d'indiquer une adresse "
 "électronique."
 
-#: kdo/forms.py:126 kdo/models.py:98
+#: kdo/forms.py:126 kdo/models.py:109
 msgid "token"
 msgstr "jeton"
 
@@ -277,118 +284,122 @@ msgstr "Ce jeton est invalide."
 msgid "This present has already been purchased by %(user)s."
 msgstr "Ce cadeau a déjà été acheté par %(user)s."
 
-#: kdo/models.py:23
+#: kdo/models.py:31
 msgid "rejected"
 msgstr "rejeté"
 
-#: kdo/models.py:24
+#: kdo/models.py:32
 msgid "suggested"
 msgstr "suggéré"
 
-#: kdo/models.py:25
+#: kdo/models.py:33
 msgid "accepted"
 msgstr "accepté"
 
-#: kdo/models.py:26
+#: kdo/models.py:34
 msgid "bought"
 msgstr "acheté"
 
-#: kdo/models.py:28 kdo/templates/kdo/present_list.html:11
+#: kdo/models.py:36 kdo/templates/kdo/present_list.html:11
 msgid "title"
 msgstr "titre"
 
-#: kdo/models.py:29 kdo/templates/kdo/invitation_list.html:14
+#: kdo/models.py:37 kdo/templates/kdo/invitation_list.html:14
 #: kdo/templates/kdo/present_detail.html:42
 #: kdo/templates/kdo/present_list.html:12
 msgid "giftee"
 msgstr "destinataire"
 
-#: kdo/models.py:30 kdo/templates/kdo/present_detail.html:59
+#: kdo/models.py:38 kdo/templates/kdo/present_detail.html:59
 #: kdo/templates/kdo/present_list.html:13
 msgid "description"
 msgstr "description"
 
-#: kdo/models.py:31 kdo/templates/kdo/present_detail.html:69
+#: kdo/models.py:39 kdo/templates/kdo/present_detail.html:69
 msgid "link"
 msgstr "lien"
 
-#: kdo/models.py:32 kdo/templates/kdo/present_detail.html:64
+#: kdo/models.py:40 kdo/templates/kdo/present_detail.html:64
 msgid "price"
 msgstr "prix"
 
-#: kdo/models.py:34
+#: kdo/models.py:42
 msgid "status"
 msgstr "état"
 
-#: kdo/models.py:36 kdo/templates/kdo/present_detail.html:82
+#: kdo/models.py:44 kdo/templates/kdo/present_detail.html:82
 msgid "bought by"
 msgstr "acheté par"
 
-#: kdo/models.py:40
+#: kdo/models.py:48
 msgid "added on"
 msgstr "ajouté le"
 
-#: kdo/models.py:41 kdo/templates/kdo/present_detail.html:77
+#: kdo/models.py:49 kdo/templates/kdo/present_detail.html:77
 msgid "updated on"
 msgstr "mis à jour le"
 
-#: kdo/models.py:44 kdo/models.py:71 kdo/models.py:99
+#: kdo/models.py:50
+msgid "archived on"
+msgstr "archivé le"
+
+#: kdo/models.py:55 kdo/models.py:82 kdo/models.py:110
 #: kdo/templates/kdo/invitation_list.html:13
 msgid "present"
 msgstr "cadeau"
 
-#: kdo/models.py:45
+#: kdo/models.py:56
 msgid "presents"
 msgstr "cadeaux"
 
-#: kdo/models.py:72
+#: kdo/models.py:83
 msgid "author"
 msgstr "auteur"
 
-#: kdo/models.py:73
+#: kdo/models.py:84
 msgid "text"
 msgstr "texte"
 
-#: kdo/models.py:74
+#: kdo/models.py:85
 msgid "posted on"
 msgstr "envoyé le"
 
-#: kdo/models.py:84
+#: kdo/models.py:95
 msgid "comment"
 msgstr "commentaire"
 
-#: kdo/models.py:85 kdo/templates/kdo/present_list.html:14
+#: kdo/models.py:96 kdo/templates/kdo/present_list.html:14
 msgid "comments"
 msgstr "commentaires"
 
-#: kdo/models.py:100
+#: kdo/models.py:111
 msgctxt "invitation"
 msgid "sent by"
 msgstr "envoyée par"
 
-#: kdo/models.py:101
+#: kdo/models.py:112
 msgctxt "invitation"
 msgid "sent to"
 msgstr "envoyée à"
 
-#: kdo/models.py:102
+#: kdo/models.py:113
 msgctxt "invitation"
 msgid "sent on"
 msgstr "envoyée le"
 
-#: kdo/models.py:110
+#: kdo/models.py:121
 msgid "invitation"
 msgstr "invitation"
 
-#: kdo/models.py:111 kdo/templates/kdo/present_detail.html:125
+#: kdo/models.py:122 kdo/templates/kdo/present_detail.html:125
 msgid "invitations"
 msgstr "invitations"
 
-#: kdo/models.py:143
+#: kdo/models.py:154
 msgid "participant"
 msgstr "participant"
 
-#: kdo/models.py:144 kdo/templates/kdo/present_detail.html:90
+#: kdo/models.py:155 kdo/templates/kdo/present_detail.html:90
 msgid "participants"
 msgstr "participants"
 
@@ -695,6 +706,57 @@ msgstr "Erreur de connection"
 msgid "Incorrect username/password. Please try again."
 msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
 
+#: templates/registration/password_reset_complete.html:5
+msgid "Password changed"
+msgstr "Mot de passe modifié"
+
+#: templates/registration/password_reset_complete.html:9
+msgid "Success!"
+msgstr "Victoire !"
+
+#: templates/registration/password_reset_complete.html:10
+msgid ""
+"Your password has been reset successfully. Try logging in now using the form "
+"on the top right."
+msgstr ""
+"Votre mot de passe a été réinitialisé avec succès. Essayez maintenant de vous "
+"connecter en utilisant le formulaire en haut à droite."
+
+#: templates/registration/password_reset_confirm.html:5
+#: templates/registration/password_reset_confirm.html:7
+msgid "Change your password"
+msgstr "Modification de mot de passe"
+
+#: templates/registration/password_reset_confirm.html:8
+msgid "Change my password"
+msgstr "Modifier mon mot de passe"
+
+#: templates/registration/password_reset_done.html:5
+msgid "Email sent"
+msgstr "Email envoyé"
+
+#: templates/registration/password_reset_done.html:9
+msgid "Roger that!"
+msgstr "Bien reçu !"
+
+#: templates/registration/password_reset_done.html:10
+msgid ""
+"You should receive an email soon with instructions on how to reset your "
+"password."
+msgstr ""
+"Vous devriez recevoir un email d'ici peu avec des instructions pour "
+"réinitialiser votre mot de passe."
+
+#: templates/registration/password_reset_form.html:5
+#: templates/registration/password_reset_form.html:7
+#: templates/registration/password_reset_subject.txt:2
+msgid "Password reset"
+msgstr "Réinitialisation de mot de passe"
+
+#: templates/registration/password_reset_form.html:8
+msgid "Reset my password"
+msgstr "Réinitialiser mon mot de passe"
+
 #, fuzzy
 #~ msgid "I bought this"
 #~ msgstr "acheté"
@@ -747,7 +809,3 @@ msgstr "Identifiant/mot de passe incorrects. Veuillez réessayer."
 #, fuzzy
 #~ msgid "Add participant"
 #~ msgstr "Ajouter un participant"
-
-#, fuzzy
-#~ msgid "password"
-#~ msgstr "Mot de passe"

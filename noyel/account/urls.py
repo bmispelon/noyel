@@ -15,4 +15,11 @@ urlpatterns = patterns('noyel.account.views',
     
     url(r'^login/$', 'login', name='login'),
     url(r'^logout/$', 'logout', name='logout'),
+
+    url(r'^lost-password/$', 'password_reset', name='password-reset'),
+    url(r'^lost-password/email-sent/$', 'password_reset_done', name='password-reset-done'),
+    url(r'^lost-password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        'password_reset_confirm',
+        name='password-reset-confirm'),
+    url(r'^lost-password/reset/done/$', 'password_reset_complete', name='password-reset-complete'),
 )

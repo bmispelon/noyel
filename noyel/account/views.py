@@ -12,7 +12,9 @@ from toolbox.next import NextMixin
 from toolbox.messages import MessageMixin, FormMessageMixin, DeleteMessageMixin
 from noyel.kdo.mixins import LoginRequiredMixin, UserQuerysetMixin
 from noyel.account.models import EmailAddress
-from noyel.account.forms import SignupForm, ProfileUpdateForm, PasswordChangeForm, EmailAddressForm
+from noyel.account.forms import (SignupForm, ProfileUpdateForm,
+                                 PasswordChangeForm, EmailAddressForm,
+                                 CustomPasswordResetForm)
 from noyel.account.emails import EmailVerificationEmail
 
 
@@ -214,3 +216,12 @@ class EmailVerifyView(LoginRequiredMixin, UserQuerysetMixin, NextMixin, MessageM
         return self.redirect()
 
 email_verify = EmailVerifyView.as_view()
+
+
+password_reset = curry(auth_views.password_reset,
+                       password_reset_form=CustomPasswordResetForm,
+                       post_reset_redirect=reverse_lazy('password-reset-done'))
+password_reset_done = auth_views.password_reset_done
+password_reset_confirm = curry(auth_views.password_reset_confirm,
+                               post_reset_redirect=reverse_lazy('password-reset-complete'))
+password_reset_complete = auth_views.password_reset_complete
