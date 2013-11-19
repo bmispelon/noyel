@@ -83,7 +83,6 @@ class CustomPasswordResetForm(PasswordResetForm):
         UserModel = get_user_model()
         email = self.cleaned_data["email"]
         emails = EmailAddress.objects.filter(email__iexact=email, user__is_active=True, verified=True).select_related('user')
-        print('Found %d emails' % emails.count())
         for email in emails:
             user = email.user
             # Make sure that no email is sent to a user that actually has
@@ -108,6 +107,6 @@ class CustomPasswordResetForm(PasswordResetForm):
             subject = loader.render_to_string(subject_template_name, c)
             # Email subject *must not* contain newlines
             subject = ''.join(subject.splitlines())
-            email = loader.render_to_string(email_template_name, c)
-            send_mail(subject, email, from_email, [user.email])
+            body = loader.render_to_string(email_template_name, c)
+            send_mail(subject, body, from_email, [email.email])
 
