@@ -112,7 +112,7 @@ class Invitation(models.Model):
         unique_together = ('present', 'sent_to')
     
     def redeem(self, user):
-        present.participants.create(user=user, present=self.present)
+        Participant.objects.create(user=user, present=self.present)
         self.delete() # XXX good idea?
         return self.present
     
