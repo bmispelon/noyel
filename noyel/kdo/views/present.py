@@ -33,7 +33,7 @@ class ListView(LoginRequiredMixin, UserQuerysetMixin, ActivePresentsMixin, gener
 base_list = ListView.as_view()
 
 
-class ListForGifteeView(ActivePresentsMixin, ListView):
+class ListForGifteeView(ListView):
     """List all presents that the current user has access to and which match
     the giftee's name captured in the URL.
     
