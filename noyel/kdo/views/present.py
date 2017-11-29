@@ -13,7 +13,14 @@ from toolbox.messages import MessageMixin, FormMessageMixin, DeleteMessageMixin
 from toolbox.next import NextMixin
 
 
-class ListView(LoginRequiredMixin, UserQuerysetMixin, generic.ListView):
+class ActivePresentsMixin(object):
+    def get_queryset(self):
+        queryset = super(ActivePresentsMixin, self).get_queryset()
+        queryset = queryset.exclude(status=Present.STATUS.ARCHIVED)
+        return queryset
+
+
+class ListView(LoginRequiredMixin, UserQuerysetMixin, ActivePresentsMixin, generic.ListView):
     """List all presents the current user has access to."""
     model = Present
     user_field_name = 'participants__user'
@@ -26,7 +33,7 @@ class ListView(LoginRequiredMixin, UserQuerysetMixin, generic.ListView):
 base_list = ListView.as_view()
 
 
-class ListForGifteeView(ListView):
+class ListForGifteeView(ActivePresentsMixin, ListView):
     """List all presents that the current user has access to and which match
     the giftee's name captured in the URL.
     

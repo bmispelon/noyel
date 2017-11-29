@@ -17,13 +17,14 @@ class Present(models.Model):
         SUGGESTED = 1
         ACCEPTED = 2
         BOUGHT = 3
-        
+        ARCHIVED = 10
         
         choices = [
             (REJECTED, _("rejected")),
             (SUGGESTED, _("suggested")),
             (ACCEPTED, _("accepted")),
             (BOUGHT, _("bought")),
+            (ARCHIVED, _("archived")),
         ]
     title = models.CharField(_("title"), max_length=50)
     giftee = models.CharField(_("giftee"), max_length=100)
