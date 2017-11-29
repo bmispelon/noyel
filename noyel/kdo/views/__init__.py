@@ -18,9 +18,13 @@ class LandingView(LoginRequiredMixin, generic.TemplateView):
         context.update({
             'latest_presents': Present.objects.filter(
                                    participants__user=self.request.user
+                               ).exclude(
+                                   status=Present.STATUS.ARCHIVED,
                                ).order_by('-created_on')[:10],
             'latest_comments': Comment.objects.filter(
                                    present__participants__user=self.request.user
+                               ).exclude(
+                                   present__status=Present.STATUS.ARCHIVED,
                                ).order_by('-posted_on')[:10],
         })
         return context
