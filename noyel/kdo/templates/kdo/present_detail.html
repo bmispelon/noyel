@@ -159,7 +159,7 @@
 {% for comment in object.comment_set.all %}
     <li>
         <blockquote>
-            {{ comment.text|linebreaks }}
+            {{ comment.text|linebreaks|urlize }}
             <small>
             <span class="user" title="{{ comment.author.username }}">
                 {{ comment.author.first_name }}
